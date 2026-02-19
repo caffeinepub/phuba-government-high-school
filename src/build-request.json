@@ -1,0 +1,116 @@
+{
+  "kind": "build_request",
+  "title": "Create Phuba Government High School interactive app",
+  "projectName": "Phuba School Hub",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a welcome homepage that displays the school name 'Phuba Government High School' with a hero section introducing the interactive features of the app",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Homepage displays 'Phuba Government High School' prominently",
+        "Hero section is visible and introduces the app's purpose",
+        "Layout is responsive and works on mobile and desktop"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a student directory section where users can view a list of students with basic information (name, class, student ID)",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Student list displays with name, class, and student ID",
+        "Data is stored and retrieved from the backend",
+        "List is searchable or filterable by class"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create an announcements section where school administrators can post and view announcements with title, content, and timestamp",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Announcements can be created with title and content",
+        "Announcements display with timestamp in reverse chronological order",
+        "Backend stores and retrieves announcements persistently"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement a class schedule viewer that displays different class schedules organized by grade or section",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Class schedules are viewable by grade/section",
+        "Schedule displays time slots, subjects, and teachers",
+        "Backend stores schedule data"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Create an events calendar section showing upcoming school events with date, time, and description",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Events are displayed in calendar or list format",
+        "Each event shows date, time, and description",
+        "Events are stored in backend and retrieved for display"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Apply a cohesive educational theme with warm, welcoming colors (such as green and gold or navy and white), clear typography suitable for an academic environment, and a professional yet approachable layout that works well for students, teachers, and parents",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color scheme is consistent across all pages",
+        "Typography is readable and appropriate for educational context",
+        "Layout conveys professionalism while remaining accessible to all user types"
+      ]
+    }
+  ],
+  "constraints": [
+    "Must use Motoko for backend implementation",
+    "Must use React with TypeScript and Tailwind CSS for frontend",
+    "All data must persist in the Internet Computer backend"
+  ],
+  "nonGoals": [
+    "Real-time chat or messaging features",
+    "External authentication providers beyond Internet Identity",
+    "Mobile native app development",
+    "Integration with third-party school management systems"
+  ],
+  "imageRequirements": {
+    "required": [
+      "School logo or emblem in a circular badge style with academic imagery (school-logo.dim_200x200.png)",
+      "Hero background showing an abstract educational theme with books, graduation cap, or school building silhouette in muted tones (hero-background.dim_1920x600.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Phuba Government High School Interactive App - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a welcome homepage with hero section displaying school name and introducing interactive features",
+      "acceptanceCriteria": [
+        "Homepage displays 'Phuba Government High School' prominently",
+        "Hero section is visible and introduces the app's purpose",
+        "Layout is responsive and works on mobile and desktop"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create homepage component with hero section displaying 'Phuba Government High School', introducing the app's interactive features (student directory, announcements, class schedules, events calendar), and incorporating the generated hero background image from frontend/public/assets/generated/hero-background.dim_1920x600.png and school logo from frontend/public/assets/generated/school-logo.dim_200x200.png as static assets"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire HomePage component into the router as the main landing route at path '/'"
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement student directory section with list view showing name, class, and student ID with search/filter capability",
+      "acceptanceCriteria": [
+        "Student list displays with name, class, and student ID",
+        "Data is stored and retrieved from the backend",
+        "List is searchable or filterable by class"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/StudentDirectoryPage.tsx",
+          "operation": "create",
+          "description": "Create student directory page that fetches and displays students from backend using getAllStudents and getStudentsByClass methods, with filtering/search UI by class name. Use the authorization component to ensure only authenticated users can view the directory. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useStudents.ts",
+          "operation": "create",
+          "description": "Create React Query hook for fetching students from backend (getAllStudents, getStudentsByClass) with proper caching and error handling"
+        },
+        {
+          "path": "frontend/src/components/StudentList.tsx",
+          "operation": "create",
+          "description": "Create reusable student list component displaying student name, class, and ID in a responsive table or card layout"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for StudentDirectoryPage at path '/students' and include navigation link in the app header/menu"
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create announcements section for viewing and posting announcements with title, content, and timestamp",
+      "acceptanceCriteria": [
+        "Announcements can be created with title and content",
+        "Announcements display with timestamp in reverse chronological order",
+        "Backend stores and retrieves announcements persistently"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AnnouncementsPage.tsx",
+          "operation": "create",
+          "description": "Create announcements page that fetches and displays all announcements from backend using getAllAnnouncements, showing title, content, and timestamp in reverse chronological order. Include admin-only create announcement form that calls addAnnouncement. Use the authorization component to guard admin-only functionality (creating announcements). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useAnnouncements.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for fetching announcements (getAllAnnouncements) and mutations for adding announcements (addAnnouncement) with proper cache invalidation"
+        },
+        {
+          "path": "frontend/src/components/AnnouncementCard.tsx",
+          "operation": "create",
+          "description": "Create announcement card component displaying title, content, and formatted timestamp with responsive styling"
+        },
+        {
+          "path": "frontend/src/components/CreateAnnouncementForm.tsx",
+          "operation": "create",
+          "description": "Create form component for admin users to create announcements with title and content fields, form validation, and submit handler"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for AnnouncementsPage at path '/announcements' and include navigation link in the app header/menu"
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement class schedule viewer organized by grade or section",
+      "acceptanceCriteria": [
+        "Class schedules are viewable by grade/section",
+        "Schedule displays time slots, subjects, and teachers",
+        "Backend stores schedule data"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ClassSchedulePage.tsx",
+          "operation": "create",
+          "description": "Create class schedule page that fetches schedules from backend using getAllClassSchedules and getClassSchedulesByGrade methods, with filtering by grade/section. Display schedule entries with time slots, subjects, and teachers. Include admin-only form for adding schedules that calls addClassSchedule. Use the authorization component to guard admin-only functionality. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useClassSchedules.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for fetching class schedules (getAllClassSchedules, getClassSchedulesByGrade) and mutations for adding schedules with proper cache invalidation"
+        },
+        {
+          "path": "frontend/src/components/ScheduleDisplay.tsx",
+          "operation": "create",
+          "description": "Create component to display class schedule in a structured table or grid format showing grade, section, and schedule entries"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for ClassSchedulePage at path '/schedules' and include navigation link in the app header/menu"
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create events calendar section showing upcoming school events with date, time, and description",
+      "acceptanceCriteria": [
+        "Events are displayed in calendar or list format",
+        "Each event shows date, time, and description",
+        "Events are stored in backend and retrieved for display"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/EventsPage.tsx",
+          "operation": "create",
+          "description": "Create events page that fetches all events from backend using getAllEvents method and displays them in list or calendar format with date, time, and description. Include admin-only form for adding events that calls addEvent. Use the authorization component to guard admin-only functionality. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useEvents.ts",
+          "operation": "create",
+          "description": "Create React Query hooks for fetching events (getAllEvents) and mutations for adding events (addEvent) with proper cache invalidation"
+        },
+        {
+          "path": "frontend/src/components/EventCard.tsx",
+          "operation": "create",
+          "description": "Create event card component displaying event title, formatted date/time, and description with responsive styling"
+        },
+        {
+          "path": "frontend/src/components/CreateEventForm.tsx",
+          "operation": "create",
+          "description": "Create form component for admin users to create events with title, description, and date/time fields"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route for EventsPage at path '/events' and include navigation link in the app header/menu"
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply cohesive educational theme with warm colors, clear typography, and professional layout",
+      "acceptanceCriteria": [
+        "Color scheme is consistent across all pages",
+        "Typography is readable and appropriate for educational context",
+        "Layout conveys professionalism while remaining accessible to all user types"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Apply educational color theme using warm, welcoming colors (green and gold or navy and white), define CSS custom properties for primary, secondary, and accent colors, and set base typography styles with clear, readable fonts appropriate for an academic environment"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom color palette matching the educational theme (green/gold or navy/white), define consistent spacing scale, and configure typography plugin for readable academic text styles"
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout component with consistent header featuring school name and navigation menu, professional styling aligned with educational theme, and responsive design that works for students, teachers, and parents"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all routes with Layout component to ensure consistent theme application across all pages"
+        }
+      ]
+    }
+  ]
+}

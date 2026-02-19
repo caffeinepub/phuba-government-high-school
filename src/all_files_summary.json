@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Main backend actor implementing user profiles, student directory (with CRUD and sorting), announcements, class schedules, and events with role-based access control using MixinAuthorization.",
+  "feature_evidence.json": "Feature evidence report documenting implementation of homepage, student directory, announcements, class schedules, events calendar, and educational theme with high confidence test mappings.",
+  "frontend-file-summaries.txt": "JSON-formatted summaries of all frontend files including App.tsx, Layout, pages (Home, Students, Announcements, Schedules, Events), hooks, and styling configuration.",
+  "frontend/index.css": "Global Tailwind CSS styles defining OKLCH color system with navy blue and gold educational theme for light and dark modes with comprehensive design tokens.",
+  "frontend/index.html": "HTML entry point with page title 'Phuba Government High School' and root div for React application mounting.",
+  "frontend/src/App.tsx": "Root application component configuring TanStack Router with five routes (home, students, announcements, schedules, events), ThemeProvider, Layout wrapper, ProfileSetupModal, and Toaster.",
+  "frontend/src/components/Layout.tsx": "Responsive layout component with sticky header, school branding with GraduationCap icon, navigation links, authentication button, mobile menu, and footer with social media links.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without profiles to enter their name on first login, preventing dismissal until profile is created.",
+  "frontend/src/hooks/useActor.ts": "Custom hook managing backend actor creation with identity-based authentication, automatic query invalidation on identity changes, and admin token initialization.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides React context and hooks for Internet Identity authentication on ICP, managing login state, identity persistence, and delegation validation with configurable AuthClient options.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching and mutating backend data including user profiles, students, announcements, class schedules, and events using the actor from useActor hook.",
+  "frontend/src/index.css": "Tailwind CSS configuration with custom CSS variables defining a navy-and-gold educational theme for both light and dark modes, including color tokens for UI components.",
+  "frontend/src/main.tsx": "Application entry point that renders the root component wrapped with QueryClientProvider for React Query and InternetIdentityProvider for authentication.",
+  "frontend/src/pages/AnnouncementsPage.tsx": "Displays school announcements with authentication check, allows admins to create new announcements via dialog form, and shows formatted timestamps for each announcement.",
+  "frontend/src/pages/ClassSchedulePage.tsx": "Shows class schedules filtered by grade with authentication requirement, displays schedules in a grid layout with grade badges for filtering.",
+  "frontend/src/pages/EventsPage.tsx": "Displays school events calendar with authentication check, allows admins to create events with date/time, and distinguishes between upcoming and past events.",
+  "frontend/src/pages/HomePage.tsx": "Landing page component with hero section displaying school logo and name, plus feature cards linking to students, announcements, schedules, and events sections with icons and descriptions.",
+  "frontend/src/pages/StudentDirectoryPage.tsx": "Student directory page with authentication check, search/filter functionality by name or class, and displays student cards with name, ID, and class information.",
+  "frontend/src/utils/urlParams.ts": "Utility functions for extracting, storing, and managing URL parameters from both query strings and hash-based routing, with sessionStorage persistence support.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration with custom color scheme using OKLCH color space, extended theme settings for container, border radius, fonts, shadows, and animations.",
+  "project_state.json": "Project metadata tracking implemented features including homepage, student directory, announcements, schedules, events calendar, and educational theme styling for Phuba Government High School app."
+}

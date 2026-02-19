@@ -1,0 +1,13 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (home, students, announcements, schedules, events) and wrapping the app with ThemeProvider, Layout, ProfileSetupModal, and Toaster components.",
+  "frontend/src/components/Layout.tsx": "Reusable layout component with responsive header/navigation, school branding with logo, authentication button, mobile menu, and footer with social links and caffeine.ai attribution.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without a profile to enter their name on first login, using the authorization system's user profile functionality.",
+  "frontend/src/pages/HomePage.tsx": "Landing page featuring hero section with school logo and background image, interactive feature cards for navigation, and statistics section showcasing school metrics.",
+  "frontend/src/pages/StudentDirectoryPage.tsx": "Student directory page with authentication guard, search functionality, class filtering, and responsive card grid displaying student information from the backend.",
+  "frontend/src/pages/AnnouncementsPage.tsx": "Announcements page with authentication guard, chronological list of announcements, and admin-only create announcement dialog with form validation.",
+  "frontend/src/pages/ClassSchedulePage.tsx": "Class schedules page with authentication guard, grade filtering, and card grid displaying schedule entries organized by grade and section.",
+  "frontend/src/pages/EventsPage.tsx": "Events calendar page with authentication guard, upcoming event badges, admin-only create event dialog with date/time picker, and responsive event cards.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, students, announcements, class schedules, and events with proper caching and invalidation.",
+  "frontend/src/index.css": "Global styles with OKLCH color system implementing navy blue and gold educational theme for both light and dark modes with proper contrast ratios.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with educational color palette (navy/gold), custom fonts (Inter), enhanced shadows, and consistent border radius values."
+}

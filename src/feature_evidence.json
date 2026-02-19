@@ -1,0 +1,127 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-welcome-homepage-that-displays-the-school-name-phuba-government-high-school-with-a-hero-section-introducing-the-interactive-features-of-the-app",
+      "featureTitle": "Create a welcome homepage that displays the school name 'Phuba Government High School' with a hero section introducing the interactive features of the app",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-student-directory-section-where-users-can-view-a-list-of-students-with-basic-information-name-class-student-id",
+      "featureTitle": "Implement a student directory section where users can view a list of students with basic information (name, class, student ID)",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/StudentDirectoryPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-announcements-section-where-school-administrators-can-post-and-view-announcements-with-title-content-and-timestamp",
+      "featureTitle": "Create an announcements section where school administrators can post and view announcements with title, content, and timestamp",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/AnnouncementsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-class-schedule-viewer-that-displays-different-class-schedules-organized-by-grade-or-section",
+      "featureTitle": "Implement a class schedule viewer that displays different class schedules organized by grade or section",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ClassSchedulePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-an-events-calendar-section-showing-upcoming-school-events-with-date-time-and-description",
+      "featureTitle": "Create an events calendar section showing upcoming school events with date, time, and description",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/EventsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-educational-theme-with-warm-welcoming-colors-such-as-green-and-gold-or-navy-and-white-clear-typography-suitable-for-an-academic-environment-and-a-professional-yet-approachable-layout-that-works-well-for-students-teachers-and-parents",
+      "featureTitle": "Apply a cohesive educational theme with warm, welcoming colors (such as green and gold or navy and white), clear typography suitable for an academic environment, and a professional yet approachable layout that works well for students, teachers, and parents",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

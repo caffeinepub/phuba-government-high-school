@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Interactive app for Phuba Government High School",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- School logo or emblem in a circular badge style with academic imagery (school-logo.dim_200x200.png)\n- Hero background showing an abstract educational theme with books, graduation cap, or school building silhouette in muted tones (hero-background.dim_1920x600.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-welcome-homepage-that-displays-the-school-name-phuba-government-high-school-with-a-hero-section-introducing-the-interactive-features-of-the-app",
+      "title": "Create a welcome homepage that displays the school name 'Phuba Government High School' with a hero section introducing the interactive features of the app",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-student-directory-section-where-users-can-view-a-list-of-students-with-basic-information-name-class-student-id",
+      "title": "Implement a student directory section where users can view a list of students with basic information (name, class, student ID)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-announcements-section-where-school-administrators-can-post-and-view-announcements-with-title-content-and-timestamp",
+      "title": "Create an announcements section where school administrators can post and view announcements with title, content, and timestamp",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-class-schedule-viewer-that-displays-different-class-schedules-organized-by-grade-or-section",
+      "title": "Implement a class schedule viewer that displays different class schedules organized by grade or section",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-events-calendar-section-showing-upcoming-school-events-with-date-time-and-description",
+      "title": "Create an events calendar section showing upcoming school events with date, time, and description",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-educational-theme-with-warm-welcoming-colors-such-as-green-and-gold-or-navy-and-white-clear-typography-suitable-for-an-academic-environment-and-a-professional-yet-approachable-layout-that-works-well-for-students-teachers-and-parents",
+      "title": "Apply a cohesive educational theme with warm, welcoming colors (such as green and gold or navy and white), clear typography suitable for an academic environment, and a professional yet approachable layout that works well for students, teachers, and parents",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "projectName": "Phuba Government High School",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
