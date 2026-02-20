@@ -1,11 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 11,
   "summary": "Interactive app for Phuba Government High School",
-  "architectural_notes": [],
+  "architectural_notes": [
+    "PWA implementation required: manifest.json, service worker, and installability features",
+    "Role-based access control required for different user types (students, teachers, parents, administrators)",
+    "Photo upload and storage system needed for galleries and teacher profiles",
+    "Payment gateway integration required for fee payment system"
+  ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- School logo or emblem in a circular badge style with academic imagery (school-logo.dim_200x200.png)\n- Hero background showing an abstract educational theme with books, graduation cap, or school building silhouette in muted tones (hero-background.dim_1920x600.png)",
+  "imageRequirements": "## Required Images\n- Professional teacher profile placeholder photo with neutral professional background (teacher-placeholder.dim_400x400.png)\n- Modern library books icon illustration with educational styling (library-icon.dim_200x200.png)\n- Academic achievement badge icon with gold accent matching theme (achievement-badge.dim_150x150.png)\n- School building facade photo representing facilities (school-building.dim_800x600.png)\n- Graduation cap and books illustration for exam results header (exam-header.dim_600x300.png)\n- Payment success checkmark icon with navy and gold colors (payment-icon.dim_128x128.png)\n- Contact envelope icon with modern design (contact-icon.dim_128x128.png)",
   "existing_features": [
     {
       "id": "feature-create-a-welcome-homepage-that-displays-the-school-name-phuba-government-high-school-with-a-hero-section-introducing-the-interactive-features-of-the-app",
@@ -54,9 +59,196 @@
         "REQ-6"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-create-a-web-app-manifest-file-frontend-public-manifest-json-with-app-metadata-including-name-phuba-government-high-school-short-name-phuba-ghs-description-theme-color-matching-the-navy-primary-color-from-the-existing-theme-background-color-display-mode-standalone-and-icons-array-with-multiple-sizes-192x192-512x512-for-app-icons",
+      "title": "Create a Web App Manifest file (frontend/public/manifest.json) with app metadata including name 'Phuba Government High School', short_name 'Phuba GHS', description, theme_color matching the navy primary color from the existing theme, background_color, display mode 'standalone', and icons array with multiple sizes (192x192, 512x512) for app icons",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-link-the-manifest-file-in-frontend-index-html-by-adding-a-link-rel-manifest-href-manifest-json-tag-in-the-head-section",
+      "title": "Link the manifest file in frontend/index.html by adding a <link rel='manifest' href='/manifest.json'> tag in the head section",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-service-worker-file-frontend-public-sw-js-that-implements-caching-strategies-for-offline-functionality-caches-static-assets-html-css-js-images-and-provides-a-basic-offline-fallback-experience",
+      "title": "Create a service worker file (frontend/public/sw.js) that implements caching strategies for offline functionality, caches static assets (HTML, CSS, JS, images), and provides a basic offline fallback experience",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-appropriate-meta-tags-to-frontend-index-html-for-pwa-support-including-viewport-theme-color-matching-the-navy-primary-color-apple-mobile-web-app-capable-and-apple-mobile-web-app-status-bar-style",
+      "title": "Add appropriate meta tags to frontend/index.html for PWA support including viewport, theme-color matching the navy primary color, apple-mobile-web-app-capable, and apple-mobile-web-app-status-bar-style",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-photo-gallery-frontend-page-with-category-filtering-general-events-achievements-facilities-grid-display-of-photos-with-titles-and-descriptions-and-an-admin-interface-for-uploading-new-photos-with-form-fields-for-title-description-category-and-image-file-upload-display-photos-as-static-assets-in-frontend-public-assets-photos",
+      "title": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-teacher-profiles-frontend-page-displaying-teacher-cards-in-a-grid-layout-with-photo-name-subjects-taught-qualifications-contact-info-and-office-hours-add-an-admin-interface-for-creating-and-editing-teacher-profiles-with-a-form-including-all-required-fields",
+      "title": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-exam-results-frontend-page-where-students-see-their-own-exam-results-displayed-in-a-table-with-columns-for-exam-name-subject-grade-percentage-date-and-remarks-add-an-admin-interface-for-entering-and-managing-exam-results-with-a-form-for-all-result-fields-and-student-selection",
+      "title": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-library-management-frontend-page-with-a-book-catalog-displaying-books-in-a-searchable-table-with-title-author-category-and-availability-show-students-their-borrowing-history-with-due-dates-and-return-status-add-an-admin-interface-for-adding-books-managing-inventory-and-processing-borrow-return-transactions",
+      "title": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-fee-payment-frontend-page-where-students-see-their-outstanding-fees-payment-history-and-total-balance-in-a-clear-dashboard-layout-display-fees-in-a-table-with-fee-type-amount-due-date-paid-amount-and-status-add-an-admin-interface-for-creating-fees-recording-payments-with-amount-and-payment-method-and-viewing-financial-reports",
+      "title": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-contact-page-with-a-public-contact-form-including-fields-for-name-email-subject-and-message-add-an-admin-contact-messages-inbox-page-displaying-all-submitted-messages-in-a-table-with-sender-info-subject-timestamp-and-status-with-the-ability-to-mark-messages-as-read-or-replied",
+      "title": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-layout-component-navigation-menu-to-include-links-to-all-new-sections-photo-gallery-teachers-exam-results-library-fees-and-contact-ensure-navigation-items-are-styled-consistently-with-the-existing-navy-and-gold-educational-theme",
+      "title": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add PWA (Progressive Web App) functionality with 'Add to Home Screen' capability",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Register the service worker in frontend/src/main.tsx after the React app mounts, checking for service worker support and handling registration lifecycle events (success, error)",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement photo galleries with categories (general, events, achievements, facilities) and admin upload/management capabilities",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Create teacher profiles section with name, subjects taught, qualifications, contact info, photo, and office hours",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Build exam results portal for students to view their grades",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement library management system for tracking books and borrowing",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Create fee payment system for tuition and other payments",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add contact forms for communication with the school",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Create a photo gallery system with four categories: general school photos, events, achievements, and facilities. Implement backend data models and CRUD operations for storing photo records with fields for title, description, category, imageUrl, uploadedBy, and timestamp.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Create a teacher profiles system with backend data models and CRUD operations for storing teacher records with fields for name, subjects (array), qualifications, contactInfo, photoUrl, and officeHours.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Create an exam results portal with backend data models for storing exam records with fields for studentId, examName, subject, grade, percentage, examDate, and remarks. Implement CRUD operations with role-based access where students can only view their own results and administrators can manage all results.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Create a library management system with backend data models for books (title, author, isbn, category, availableCopies, totalCopies) and borrowing records (bookId, studentId, borrowDate, dueDate, returnDate, status). Implement CRUD operations for books and borrowing records with role-based access where students can view books and their borrowing history, and administrators can manage books and all borrowing records.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Create a fee payment system with backend data models for fee records (studentId, feeType, amount, dueDate, paidAmount, paidDate, status, description) and payment transactions (feeId, studentId, amount, paymentDate, paymentMethod, transactionId). Implement CRUD operations where students can view their fee obligations and payment history, and administrators can manage fees and record payments.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Create a contact form system with backend data models for storing contact messages with fields for senderName, senderEmail, subject, message, timestamp, status (new/read/replied), and optional studentId for authenticated users. Implement operations where anyone can submit contact forms and administrators can view and manage all messages.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    }
+  ],
   "projectName": "Phuba Government High School",
   "clarification_mode": "instant",
   "clarification_rounds": 0

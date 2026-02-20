@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useInternetIdentity } from '../hooks/useInternetIdentity';
 import { useQueryClient } from '@tanstack/react-query';
 import { SiFacebook, SiX, SiInstagram } from 'react-icons/si';
+import { useIsCallerAdmin } from '../hooks/useQueries';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const { data: isAdmin } = useIsCallerAdmin();
 
   const isAuthenticated = !!identity;
   const disabled = loginStatus === 'logging-in';
@@ -38,10 +40,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/students', label: 'Students' },
+    { to: '/teachers', label: 'Teachers' },
     { to: '/announcements', label: 'Announcements' },
     { to: '/schedules', label: 'Schedules' },
     { to: '/events', label: 'Events' },
+    { to: '/photos', label: 'Gallery' },
+    { to: '/exam-results', label: 'Exam Results' },
+    { to: '/library', label: 'Library' },
+    { to: '/fees', label: 'Fees' },
+    { to: '/contact', label: 'Contact' },
   ];
+
+  const adminLinks = isAdmin
+    ? [{ to: '/admin/contact-inbox', label: 'Messages' }]
+    : [];
+
+  const allLinks = [...navLinks, ...adminLinks];
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -65,12 +79,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
+            <nav className="hidden lg:flex items-center gap-1">
+              {navLinks.slice(0, 6).map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     currentPath === link.to
                       ? 'bg-accent text-accent-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
@@ -97,7 +111,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden"
+                className="lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -107,9 +121,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-border/40">
+            <div className="lg:hidden py-4 border-t border-border/40">
               <nav className="flex flex-col gap-2">
-                {navLinks.map((link) => (
+                {allLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
@@ -171,18 +185,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/announcements" className="hover:text-foreground transition-colors">
-                    Announcements
+                  <Link to="/teachers" className="hover:text-foreground transition-colors">
+                    Teachers
                   </Link>
                 </li>
                 <li>
-                  <Link to="/schedules" className="hover:text-foreground transition-colors">
-                    Class Schedules
+                  <Link to="/library" className="hover:text-foreground transition-colors">
+                    Library
                   </Link>
                 </li>
                 <li>
-                  <Link to="/events" className="hover:text-foreground transition-colors">
-                    Events Calendar
+                  <Link to="/contact" className="hover:text-foreground transition-colors">
+                    Contact Us
                   </Link>
                 </li>
               </ul>

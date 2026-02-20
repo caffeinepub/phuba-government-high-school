@@ -1,115 +1,294 @@
 {
   "kind": "build_request",
-  "title": "Create Phuba Government High School interactive app",
-  "projectName": "Phuba School Hub",
+  "title": "Add advanced school management features with photo galleries, teacher profiles, exam results, library system, fee payment, and contact forms",
+  "projectName": "Phuba Government High School",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a welcome homepage that displays the school name 'Phuba Government High School' with a hero section introducing the interactive features of the app",
+      "id": "REQ-12",
+      "text": "Create a photo gallery system with four categories: general school photos, events, achievements, and facilities. Implement backend data models and CRUD operations for storing photo records with fields for title, description, category, imageUrl, uploadedBy, and timestamp.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Photo Galleries with admin management for general school photos, events, achievements, and facilities"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend supports creating, reading, updating, and deleting photo records",
+        "Photos are categorized into: general, events, achievements, facilities",
+        "Each photo record includes title, description, category, imageUrl, uploadedBy principal, and timestamp",
+        "Only authenticated administrators can upload and manage photos"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-last"
+        ],
+        "quotes": [
+          "Photo Galleries with admin management for general school photos, events, achievements, and facilities"
         ]
       },
       "acceptanceCriteria": [
-        "Homepage displays 'Phuba Government High School' prominently",
-        "Hero section is visible and introduces the app's purpose",
-        "Layout is responsive and works on mobile and desktop"
+        "Photo gallery page displays photos in a responsive grid layout",
+        "Users can filter photos by category (general, events, achievements, facilities)",
+        "Each photo shows title, description, and full image",
+        "Administrators see an upload button that opens a form modal",
+        "Upload form includes fields for title, description, category selection, and image file input",
+        "Photos are stored in frontend/public/assets/photos and referenced by URL"
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Implement a student directory section where users can view a list of students with basic information (name, class, student ID)",
-      "target": "both",
+      "id": "REQ-14",
+      "text": "Create a teacher profiles system with backend data models and CRUD operations for storing teacher records with fields for name, subjects (array), qualifications, contactInfo, photoUrl, and officeHours.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-last"
+        ],
+        "quotes": [
+          "Teacher Profiles including name, subjects, qualifications, contact info, photos, and office hours"
         ]
       },
       "acceptanceCriteria": [
-        "Student list displays with name, class, and student ID",
-        "Data is stored and retrieved from the backend",
-        "List is searchable or filterable by class"
+        "Backend supports creating, reading, updating, and deleting teacher profiles",
+        "Each teacher profile includes name, array of subjects taught, qualifications text, contact info, photo URL, and office hours",
+        "Only authenticated administrators can create, update, or delete teacher profiles",
+        "All authenticated users can view teacher profiles"
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Create an announcements section where school administrators can post and view announcements with title, content, and timestamp",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Announcements can be created with title and content",
-        "Announcements display with timestamp in reverse chronological order",
-        "Backend stores and retrieves announcements persistently"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Implement a class schedule viewer that displays different class schedules organized by grade or section",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Class schedules are viewable by grade/section",
-        "Schedule displays time slots, subjects, and teachers",
-        "Backend stores schedule data"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Create an events calendar section showing upcoming school events with date, time, and description",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Events are displayed in calendar or list format",
-        "Each event shows date, time, and description",
-        "Events are stored in backend and retrieved for display"
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Apply a cohesive educational theme with warm, welcoming colors (such as green and gold or navy and white), clear typography suitable for an academic environment, and a professional yet approachable layout that works well for students, teachers, and parents",
+      "id": "REQ-15",
+      "text": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-last"
+        ],
+        "quotes": [
+          "Teacher Profiles including name, subjects, qualifications, contact info, photos, and office hours"
         ]
       },
       "acceptanceCriteria": [
-        "Color scheme is consistent across all pages",
-        "Typography is readable and appropriate for educational context",
-        "Layout conveys professionalism while remaining accessible to all user types"
+        "Teacher profiles page displays all teachers in a responsive card grid",
+        "Each card shows teacher photo, name, subjects, qualifications, contact info, and office hours",
+        "Administrators see buttons to add new teachers and edit existing profiles",
+        "Teacher form includes inputs for name, subjects (multi-select or comma-separated), qualifications, contact info, photo URL, and office hours",
+        "Teacher photos are stored in frontend/public/assets/teachers"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Create an exam results portal with backend data models for storing exam records with fields for studentId, examName, subject, grade, percentage, examDate, and remarks. Implement CRUD operations with role-based access where students can only view their own results and administrators can manage all results.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Exam results portal for students to view their grades"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores exam results with studentId, examName, subject, grade, percentage, examDate, and remarks",
+        "Students can only query and view their own exam results based on their authenticated principal/studentId",
+        "Administrators can create, update, delete, and view all exam results",
+        "Results can be filtered by student, subject, and date range"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Exam results portal for students to view their grades"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Students see a table of their own exam results when authenticated",
+        "Results table shows exam name, subject, grade, percentage, date, and remarks",
+        "Students can filter their results by subject or date range",
+        "Administrators see all results and have buttons to add/edit results",
+        "Admin form includes student selection, exam name, subject, grade, percentage, date, and remarks inputs"
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "text": "Create a library management system with backend data models for books (title, author, isbn, category, availableCopies, totalCopies) and borrowing records (bookId, studentId, borrowDate, dueDate, returnDate, status). Implement CRUD operations for books and borrowing records with role-based access where students can view books and their borrowing history, and administrators can manage books and all borrowing records.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Library management system for tracking books and borrowing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores book records with title, author, isbn, category, availableCopies, and totalCopies",
+        "Backend stores borrowing records with bookId, studentId, borrowDate, dueDate, returnDate, and status (borrowed/returned/overdue)",
+        "Students can view all books and their own borrowing history",
+        "Administrators can add/edit/delete books and manage all borrowing records",
+        "System tracks available copies and prevents borrowing when availableCopies is zero"
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Library management system for tracking books and borrowing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Library page shows a searchable catalog of all books with availability status",
+        "Students see their current borrowed books with due dates and borrowing history",
+        "Students can see which books are available to borrow",
+        "Administrators see buttons to add new books and manage inventory",
+        "Administrators can record book borrowing and returns with student selection and date inputs",
+        "System visually indicates overdue books"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Create a fee payment system with backend data models for fee records (studentId, feeType, amount, dueDate, paidAmount, paidDate, status, description) and payment transactions (feeId, studentId, amount, paymentDate, paymentMethod, transactionId). Implement CRUD operations where students can view their fee obligations and payment history, and administrators can manage fees and record payments.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Fee payment system for tuition and other payments"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores fee records with studentId, feeType, amount, dueDate, paidAmount, paidDate, status (pending/partial/paid), and description",
+        "Backend stores payment transactions with feeId, studentId, amount, paymentDate, paymentMethod, and transactionId",
+        "Students can view their own fees and payment history",
+        "Administrators can create fees for students, record payments, and view all financial records",
+        "System calculates outstanding balances and tracks payment status"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Fee payment system for tuition and other payments"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Students see a dashboard showing total outstanding balance and payment history",
+        "Fees are displayed in a table with type, amount, due date, amount paid, and status",
+        "Students see visual indicators for overdue fees",
+        "Administrators can create new fees for students with fee type, amount, due date, and description",
+        "Administrators can record payments with student selection, fee selection, amount, payment method, and transaction ID",
+        "Payment history shows all transactions with dates and methods"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Create a contact form system with backend data models for storing contact messages with fields for senderName, senderEmail, subject, message, timestamp, status (new/read/replied), and optional studentId for authenticated users. Implement operations where anyone can submit contact forms and administrators can view and manage all messages.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Contact forms for communication with the school"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores contact messages with senderName, senderEmail, subject, message, timestamp, status, and optional studentId",
+        "Unauthenticated users can submit contact forms",
+        "Authenticated users can submit contact forms with their studentId automatically attached",
+        "Administrators can view all contact messages and update their status",
+        "Messages are timestamped and can be filtered by status"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "Contact forms for communication with the school"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Contact page is publicly accessible without authentication",
+        "Form includes required fields for name, email, subject, and message",
+        "Authenticated users have name and email pre-filled from their profile",
+        "Form shows success message after submission",
+        "Administrators see a messages inbox page with all contact submissions",
+        "Admin inbox displays messages in a table with filters for status (new/read/replied)",
+        "Administrators can click messages to view full content and update status"
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation menu includes links to Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact pages",
+        "New navigation items match the existing styling and theme",
+        "Mobile menu includes all new navigation items",
+        "Navigation highlights the active page"
       ]
     }
   ],
   "constraints": [
-    "Must use Motoko for backend implementation",
-    "Must use React with TypeScript and Tailwind CSS for frontend",
-    "All data must persist in the Internet Computer backend"
+    "Maintain single-actor Motoko architecture in backend/main.mo",
+    "Do not modify immutable frontend paths: useInternetIdentity.ts, useInternetIdentity.tsx, useActor.ts, main.tsx, components/ui",
+    "Use existing MixinAuthorization pattern for role-based access control",
+    "Maintain existing navy and gold educational theme with OKLCH color system",
+    "Follow existing patterns for React Query hooks and TanStack Router",
+    "Keep PWA functionality intact (manifest.json, service worker, meta tags)"
   ],
   "nonGoals": [
-    "Real-time chat or messaging features",
-    "External authentication providers beyond Internet Identity",
-    "Mobile native app development",
-    "Integration with third-party school management systems"
+    "Integration with external payment processors like Stripe or PayPal",
+    "Real-time notifications or WebSocket connections",
+    "Email sending functionality for contact forms",
+    "SMS notifications for overdue fees or library books",
+    "Integration with external identity providers beyond Internet Identity",
+    "Mobile-specific native features beyond PWA capabilities",
+    "Third-party APIs for book information or ISBN lookup"
   ],
   "imageRequirements": {
     "required": [
-      "School logo or emblem in a circular badge style with academic imagery (school-logo.dim_200x200.png)",
-      "Hero background showing an abstract educational theme with books, graduation cap, or school building silhouette in muted tones (hero-background.dim_1920x600.png)"
+      "Professional teacher profile placeholder photo with neutral professional background (teacher-placeholder.dim_400x400.png)",
+      "Modern library books icon illustration with educational styling (library-icon.dim_200x200.png)",
+      "Academic achievement badge icon with gold accent matching theme (achievement-badge.dim_150x150.png)",
+      "School building facade photo representing facilities (school-building.dim_800x600.png)",
+      "Graduation cap and books illustration for exam results header (exam-header.dim_600x300.png)",
+      "Payment success checkmark icon with navy and gold colors (payment-icon.dim_128x128.png)",
+      "Contact envelope icon with modern design (contact-icon.dim_128x128.png)"
     ],
     "edits": []
   }

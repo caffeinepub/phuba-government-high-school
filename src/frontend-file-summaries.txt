@@ -1,7 +1,7 @@
 {
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (home, students, announcements, schedules, events) and wrapping the app with ThemeProvider, Layout, ProfileSetupModal, and Toaster components.",
   "frontend/src/components/Layout.tsx": "Reusable layout component with responsive header/navigation, school branding with logo, authentication button, mobile menu, and footer with social links and caffeine.ai attribution.",
-  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without a profile to enter their name on first login, using the authorization system's user profile functionality.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without a profile to enter their name and optional student ID on first login, creating a UserProfile with empty photo blob using the authorization system.",
   "frontend/src/pages/HomePage.tsx": "Landing page featuring hero section with school logo and background image, interactive feature cards for navigation, and statistics section showcasing school metrics.",
   "frontend/src/pages/StudentDirectoryPage.tsx": "Student directory page with authentication guard, search functionality, class filtering, and responsive card grid displaying student information from the backend.",
   "frontend/src/pages/AnnouncementsPage.tsx": "Announcements page with authentication guard, chronological list of announcements, and admin-only create announcement dialog with form validation.",
@@ -9,5 +9,12 @@
   "frontend/src/pages/EventsPage.tsx": "Events calendar page with authentication guard, upcoming event badges, admin-only create event dialog with date/time picker, and responsive event cards.",
   "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, students, announcements, class schedules, and events with proper caching and invalidation.",
   "frontend/src/index.css": "Global styles with OKLCH color system implementing navy blue and gold educational theme for both light and dark modes with proper contrast ratios.",
-  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with educational color palette (navy/gold), custom fonts (Inter), enhanced shadows, and consistent border radius values."
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with educational color palette (navy/gold), custom fonts (Inter), enhanced shadows, and consistent border radius values.",
+  "frontend/public/manifest.json": "Web App Manifest file defining PWA metadata including app name, icons, theme colors, and display mode for Phuba Government High School.",
+  "frontend/public/sw.js": "Service worker implementing install, activate, and fetch event handlers with cache-first strategy for static assets and network-first strategy for API calls.",
+  "frontend/index.html": "HTML entry point with PWA meta tags, manifest link, Apple-specific meta tags, and theme color configuration for mobile and iOS support.",
+  "frontend/src/main.tsx": "Application entry point with React initialization, providers setup, and service worker registration logic for PWA functionality.",
+  "frontend/src/pages/FeesPage.tsx": "Fee management page displaying student fee records with outstanding balance dashboard, payment history table, and admin controls for adding fees and recording payments with proper status indicators for overdue fees.",
+  "frontend/src/pages/ContactPage.tsx": "Publicly accessible contact page with form for submitting messages (pre-filled for authenticated users), school contact information including phone, email, address, and office hours displayed in cards.",
+  "frontend/src/pages/ContactInboxPage.tsx": "Admin-only contact messages inbox page displaying all submitted contact forms in a table with status filtering (new/read/replied), message viewing dialog, and status update/delete functionality."
 }

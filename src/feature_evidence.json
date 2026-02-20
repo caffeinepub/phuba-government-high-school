@@ -2,11 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-welcome-homepage-that-displays-the-school-name-phuba-government-high-school-with-a-hero-section-introducing-the-interactive-features-of-the-app",
-      "featureTitle": "Create a welcome homepage that displays the school name 'Phuba Government High School' with a hero section introducing the interactive features of the app",
+      "featureId": "feature-create-a-photo-gallery-frontend-page-with-category-filtering-general-events-achievements-facilities-grid-display-of-photos-with-titles-and-descriptions-and-an-admin-interface-for-uploading-new-photos-with-form-fields-for-title-description-category-and-image-file-upload-display-photos-as-static-assets-in-frontend-public-assets-photos",
+      "featureTitle": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/PhotoGalleryPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -14,19 +14,20 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-13"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-student-directory-section-where-users-can-view-a-list-of-students-with-basic-information-name-class-student-id",
-      "featureTitle": "Implement a student directory section where users can view a list of students with basic information (name, class, student ID)",
+      "featureId": "feature-create-a-teacher-profiles-frontend-page-displaying-teacher-cards-in-a-grid-layout-with-photo-name-subjects-taught-qualifications-contact-info-and-office-hours-add-an-admin-interface-for-creating-and-editing-teacher-profiles-with-a-form-including-all-required-fields",
+      "featureTitle": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/StudentDirectoryPage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/TeachersPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -34,19 +35,20 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-15"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-an-announcements-section-where-school-administrators-can-post-and-view-announcements-with-title-content-and-timestamp",
-      "featureTitle": "Create an announcements section where school administrators can post and view announcements with title, content, and timestamp",
+      "featureId": "feature-create-an-exam-results-frontend-page-where-students-see-their-own-exam-results-displayed-in-a-table-with-columns-for-exam-name-subject-grade-percentage-date-and-remarks-add-an-admin-interface-for-entering-and-managing-exam-results-with-a-form-for-all-result-fields-and-student-selection",
+      "featureTitle": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/AnnouncementsPage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/ExamResultsPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -54,19 +56,20 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-17"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-class-schedule-viewer-that-displays-different-class-schedules-organized-by-grade-or-section",
-      "featureTitle": "Implement a class schedule viewer that displays different class schedules organized by grade or section",
+      "featureId": "feature-create-a-library-management-frontend-page-with-a-book-catalog-displaying-books-in-a-searchable-table-with-title-author-category-and-availability-show-students-their-borrowing-history-with-due-dates-and-return-status-add-an-admin-interface-for-adding-books-managing-inventory-and-processing-borrow-return-transactions",
+      "featureTitle": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/ClassSchedulePage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/LibraryPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -74,19 +77,20 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-19"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-an-events-calendar-section-showing-upcoming-school-events-with-date-time-and-description",
-      "featureTitle": "Create an events calendar section showing upcoming school events with date, time, and description",
+      "featureId": "feature-create-a-fee-payment-frontend-page-where-students-see-their-outstanding-fees-payment-history-and-total-balance-in-a-clear-dashboard-layout-display-fees-in-a-table-with-fee-type-amount-due-date-paid-amount-and-status-add-an-admin-interface-for-creating-fees-recording-payments-with-amount-and-payment-method-and-viewing-financial-reports",
+      "featureTitle": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/EventsPage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/FeesPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -94,21 +98,21 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-21"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-apply-a-cohesive-educational-theme-with-warm-welcoming-colors-such-as-green-and-gold-or-navy-and-white-clear-typography-suitable-for-an-academic-environment-and-a-professional-yet-approachable-layout-that-works-well-for-students-teachers-and-parents",
-      "featureTitle": "Apply a cohesive educational theme with warm, welcoming colors (such as green and gold or navy and white), clear typography suitable for an academic environment, and a professional yet approachable layout that works well for students, teachers, and parents",
+      "featureId": "feature-create-a-contact-page-with-a-public-contact-form-including-fields-for-name-email-subject-and-message-add-an-admin-contact-messages-inbox-page-displaying-all-submitted-messages-in-a-table-with-sender-info-subject-timestamp-and-status-with-the-ability-to-mark-messages-as-read-or-replied",
+      "featureTitle": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/Layout.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/ContactInboxPage.tsx",
+        "frontend/src/pages/ContactPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -116,10 +120,31 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-6"
+        "REQ-23"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-layout-component-navigation-menu-to-include-links-to-all-new-sections-photo-gallery-teachers-exam-results-library-fees-and-contact-ensure-navigation-items-are-styled-consistently-with-the-existing-navy-and-gold-educational-theme",
+      "featureTitle": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
+      "files": [
+        "frontend/src/components/Layout.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
       ],
       "confidence": "high"
     }

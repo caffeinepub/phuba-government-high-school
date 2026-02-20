@@ -1,65 +1,83 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-19T15:13:34.782Z",
-  "summary": "The implementation comprehensively addresses all six requirements. The frontend includes a hero homepage with school branding, student directory with filtering, announcements with timestamps, class schedules by grade, events calendar, and a consistent navy/gold educational theme. The backend (Motoko) provides persistent storage for all data types with proper authentication and authorization controls.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-20T09:26:21.716Z",
+  "summary": "The diff implements most of the requested features but has notable gaps. Backend implementation for photo gallery (REQ-12), teacher profiles (REQ-14), exam results (REQ-16), library (REQ-18), fee payment (REQ-20), and contact forms (REQ-22) is incomplete or missing. The backend/main.mo file is truncated and does not show data models or CRUD operations for these new features. Frontend implementations appear complete for all requirements (REQ-13, 15, 17, 19, 21, 23, 24), and navigation updates (REQ-24) are properly implemented in Layout.tsx. Migration file added but incomplete. Required images are not present in the diff.",
+  "missing_requirements": [
     {
-      "description": "User profile system with ProfileSetupModal requiring name and role on first login",
-      "reason": "BuildRequest does not specify any user profile management or registration flow. The authorization system and profile setup modal are not part of the stated requirements.",
+      "id": "REQ-12",
+      "requirement": "Create a photo gallery system with backend data models and CRUD operations for storing photo records with fields for title, description, category, imageUrl, uploadedBy, and timestamp",
+      "reason": "Backend main.mo is truncated and does not show PhotoRecord type definition or CRUD operations (addPhotoRecord, removePhotoRecord, getPhotoRecordsByCategory, getAllPhotoRecords)",
       "evidence": [
-        "frontend/src/components/ProfileSetupModal.tsx",
         "backend/main.mo"
       ]
     },
     {
-      "description": "Admin/user role-based access control system with permission checks",
-      "reason": "BuildRequest does not mention role-based access control, admin roles, or permission systems. Requirements only mention 'school administrators can post' but do not specify a formal authorization system.",
+      "id": "REQ-14",
+      "requirement": "Create a teacher profiles system with backend data models and CRUD operations for storing teacher records",
+      "reason": "Backend main.mo is truncated and does not show TeacherProfile type definition or CRUD operations (addTeacherProfile, updateTeacherProfile, removeTeacherProfile, getAllTeacherProfiles)",
       "evidence": [
-        "backend/main.mo",
-        "frontend/src/hooks/useQueries.ts"
+        "backend/main.mo"
       ]
     },
     {
-      "description": "Admin token initialization system via URL parameter",
-      "reason": "BuildRequest does not specify any admin initialization mechanism or secret token system for bootstrapping access control.",
+      "id": "REQ-16",
+      "requirement": "Create an exam results portal with backend data models for storing exam records with role-based access",
+      "reason": "Backend main.mo is truncated and does not show ExamResult type definition or CRUD operations (addExamResult, updateExamResult, removeExamResult, getStudentExamResults, getAllExamResults)",
       "evidence": [
-        "frontend/src/hooks/useActor.ts",
-        "frontend/src/utils/urlParams.ts"
+        "backend/main.mo"
       ]
     },
     {
-      "description": "Theme toggle with dark mode support",
-      "reason": "BuildRequest specifies a single educational theme with warm colors but does not request dark mode or theme switching functionality.",
+      "id": "REQ-18",
+      "requirement": "Create a library management system with backend data models for books and borrowing records",
+      "reason": "Backend main.mo is truncated and does not show Book and BorrowingRecord type definitions or CRUD operations (addBook, updateBook, removeBook, borrowBook, returnBook, getAllBooks, getStudentBorrowingHistory)",
       "evidence": [
-        "frontend/src/App.tsx",
-        "frontend/src/index.css"
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Create a fee payment system with backend data models for fee records and payment transactions",
+      "reason": "Backend main.mo is truncated and does not show FeeRecord and PaymentTransaction type definitions or CRUD operations (addFeeRecord, updateFeeRecord, removeFeeRecord, recordPayment, getStudentFeeRecords, getStudentPaymentHistory)",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "Create a contact form system with backend data models for storing contact messages",
+      "reason": "Backend main.mo is truncated and does not show ContactForm type definition or operations (submitContactForm, getAllContactForms, updateContactStatus, deleteContactForm)",
+      "evidence": [
+        "backend/main.mo"
       ]
     }
   ],
-  "confidence": 0.92,
+  "hallucinated_features": [
+    {
+      "description": "Migration module in backend/migration.mo adds photo field to Student and UserProfile types",
+      "reason": "Build request does not mention adding photo fields to existing Student or UserProfile types; only new teacher photos and gallery photos were requested",
+      "evidence": [
+        "backend/migration.mo"
+      ]
+    }
+  ],
+  "confidence": 0.75,
   "changed_files": [
-    "all_files_summary.json",
     "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
     "frontend/src/App.tsx",
     "frontend/src/components/Layout.tsx",
     "frontend/src/components/ProfileSetupModal.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
     "frontend/src/hooks/useQueries.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/pages/AnnouncementsPage.tsx",
-    "frontend/src/pages/ClassSchedulePage.tsx",
-    "frontend/src/pages/EventsPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/StudentDirectoryPage.tsx",
-    "frontend/src/utils/urlParams.ts",
-    "frontend/tailwind.config.js",
+    "frontend/src/pages/ContactInboxPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/ExamResultsPage.tsx",
+    "frontend/src/pages/FeesPage.tsx",
+    "frontend/src/pages/LibraryPage.tsx",
+    "frontend/src/pages/PhotoGalleryPage.tsx",
+    "frontend/src/pages/TeachersPage.tsx",
     "project_state.json"
   ]
 }

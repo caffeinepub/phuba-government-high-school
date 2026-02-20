@@ -8,16 +8,103 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const _CaffeineStorageCreateCertificateResult = IDL.Record({
+  'method' : IDL.Text,
+  'blob_hash' : IDL.Text,
+});
+export const _CaffeineStorageRefillInformation = IDL.Record({
+  'proposed_top_up_amount' : IDL.Opt(IDL.Nat),
+});
+export const _CaffeineStorageRefillResult = IDL.Record({
+  'success' : IDL.Opt(IDL.Bool),
+  'topped_up_amount' : IDL.Opt(IDL.Nat),
+});
+export const ExternalBlob = IDL.Vec(IDL.Nat8);
+export const Book = IDL.Record({
+  'id' : IDL.Nat,
+  'title' : IDL.Text,
+  'availableCopies' : IDL.Nat,
+  'thumbnail' : ExternalBlob,
+  'isbn' : IDL.Text,
+  'author' : IDL.Text,
+  'totalCopies' : IDL.Nat,
+  'category' : IDL.Text,
+});
 export const Time = IDL.Int;
+export const ExamResult = IDL.Record({
+  'studentId' : IDL.Text,
+  'subject' : IDL.Text,
+  'grade' : IDL.Text,
+  'examDate' : Time,
+  'examName' : IDL.Text,
+  'remarks' : IDL.Text,
+  'percentage' : IDL.Nat,
+});
+export const FeeStatus = IDL.Variant({
+  'pending' : IDL.Null,
+  'paid' : IDL.Null,
+  'overdue' : IDL.Null,
+  'partial' : IDL.Null,
+});
+export const FeeRecord = IDL.Record({
+  'id' : IDL.Nat,
+  'status' : FeeStatus,
+  'studentId' : IDL.Text,
+  'feeType' : IDL.Text,
+  'dueDate' : Time,
+  'description' : IDL.Text,
+  'paidDate' : IDL.Opt(Time),
+  'paidAmount' : IDL.Nat,
+  'amount' : IDL.Nat,
+});
+export const PhotoCategory = IDL.Variant({
+  'achievements' : IDL.Null,
+  'events' : IDL.Null,
+  'facilities' : IDL.Null,
+  'general' : IDL.Null,
+});
+export const PhotoRecord = IDL.Record({
+  'id' : IDL.Nat,
+  'title' : IDL.Text,
+  'description' : IDL.Text,
+  'timestamp' : Time,
+  'category' : PhotoCategory,
+  'image' : ExternalBlob,
+  'uploadedBy' : IDL.Text,
+});
 export const Student = IDL.Record({
   'id' : IDL.Text,
   'name' : IDL.Text,
+  'photo' : ExternalBlob,
   'className' : IDL.Text,
+});
+export const TeacherProfile = IDL.Record({
+  'id' : IDL.Text,
+  'contactInfo' : IDL.Text,
+  'subjects' : IDL.Vec(IDL.Text),
+  'officeHours' : IDL.Text,
+  'name' : IDL.Text,
+  'qualifications' : IDL.Text,
+  'photo' : ExternalBlob,
 });
 export const UserRole = IDL.Variant({
   'admin' : IDL.Null,
   'user' : IDL.Null,
   'guest' : IDL.Null,
+});
+export const BorrowStatus = IDL.Variant({
+  'borrowed' : IDL.Null,
+  'overdue' : IDL.Null,
+  'returned' : IDL.Null,
+});
+export const BorrowingRecord = IDL.Record({
+  'id' : IDL.Nat,
+  'status' : BorrowStatus,
+  'studentId' : IDL.Text,
+  'borrowDate' : Time,
+  'dueDate' : Time,
+  'bookId' : IDL.Nat,
+  'returnDate' : IDL.Opt(Time),
 });
 export const Announcement = IDL.Record({
   'id' : IDL.Nat,
@@ -30,29 +117,110 @@ export const ClassSchedule = IDL.Record({
   'grade' : IDL.Text,
   'schedule' : IDL.Vec(IDL.Text),
 });
+export const ContactStatus = IDL.Variant({
+  'new' : IDL.Null,
+  'read' : IDL.Null,
+  'replied' : IDL.Null,
+});
+export const ContactForm = IDL.Record({
+  'id' : IDL.Nat,
+  'status' : ContactStatus,
+  'studentId' : IDL.Opt(IDL.Text),
+  'subject' : IDL.Text,
+  'message' : IDL.Text,
+  'timestamp' : Time,
+  'senderName' : IDL.Text,
+  'senderEmail' : IDL.Text,
+});
 export const Event = IDL.Record({
   'id' : IDL.Nat,
   'title' : IDL.Text,
   'date' : Time,
   'description' : IDL.Text,
 });
-export const UserProfile = IDL.Record({ 'name' : IDL.Text, 'role' : IDL.Text });
+export const PaymentTransaction = IDL.Record({
+  'id' : IDL.Nat,
+  'paymentMethod' : IDL.Text,
+  'studentId' : IDL.Text,
+  'paymentDate' : Time,
+  'amount' : IDL.Nat,
+  'transactionId' : IDL.Text,
+  'feeId' : IDL.Nat,
+});
+export const UserProfile = IDL.Record({
+  'studentId' : IDL.Opt(IDL.Text),
+  'name' : IDL.Text,
+  'role' : IDL.Text,
+  'photo' : ExternalBlob,
+});
 
 export const idlService = IDL.Service({
+  '_caffeineStorageBlobIsLive' : IDL.Func(
+      [IDL.Vec(IDL.Nat8)],
+      [IDL.Bool],
+      ['query'],
+    ),
+  '_caffeineStorageBlobsToDelete' : IDL.Func(
+      [],
+      [IDL.Vec(IDL.Vec(IDL.Nat8))],
+      ['query'],
+    ),
+  '_caffeineStorageConfirmBlobDeletion' : IDL.Func(
+      [IDL.Vec(IDL.Vec(IDL.Nat8))],
+      [],
+      [],
+    ),
+  '_caffeineStorageCreateCertificate' : IDL.Func(
+      [IDL.Text],
+      [_CaffeineStorageCreateCertificateResult],
+      [],
+    ),
+  '_caffeineStorageRefillCashier' : IDL.Func(
+      [IDL.Opt(_CaffeineStorageRefillInformation)],
+      [_CaffeineStorageRefillResult],
+      [],
+    ),
+  '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
   'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
+  'addBook' : IDL.Func([Book], [], []),
   'addClassSchedule' : IDL.Func(
       [IDL.Text, IDL.Text, IDL.Vec(IDL.Text)],
       [],
       [],
     ),
   'addEvent' : IDL.Func([IDL.Text, IDL.Text, Time], [], []),
+  'addExamResult' : IDL.Func([ExamResult], [], []),
+  'addFeeRecord' : IDL.Func([FeeRecord], [], []),
+  'addPhotoRecord' : IDL.Func([PhotoRecord], [], []),
   'addStudent' : IDL.Func([Student], [], []),
+  'addTeacherProfile' : IDL.Func([TeacherProfile], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'borrowBook' : IDL.Func([IDL.Nat, IDL.Text, Time], [], []),
+  'deleteContactForm' : IDL.Func([IDL.Nat], [], []),
+  'getActiveBorrowings' : IDL.Func([], [IDL.Vec(BorrowingRecord)], ['query']),
   'getAllAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
+  'getAllBooks' : IDL.Func([], [IDL.Vec(Book)], ['query']),
+  'getAllBorrowingRecords' : IDL.Func(
+      [],
+      [IDL.Vec(BorrowingRecord)],
+      ['query'],
+    ),
   'getAllClassSchedules' : IDL.Func([], [IDL.Vec(ClassSchedule)], ['query']),
+  'getAllContactForms' : IDL.Func([], [IDL.Vec(ContactForm)], ['query']),
   'getAllEvents' : IDL.Func([], [IDL.Vec(Event)], ['query']),
+  'getAllExamResults' : IDL.Func([], [IDL.Vec(ExamResult)], ['query']),
+  'getAllFeeRecords' : IDL.Func([], [IDL.Vec(FeeRecord)], ['query']),
+  'getAllPaymentTransactions' : IDL.Func(
+      [],
+      [IDL.Vec(PaymentTransaction)],
+      ['query'],
+    ),
+  'getAllPhotoRecords' : IDL.Func([], [IDL.Vec(PhotoRecord)], ['query']),
   'getAllStudents' : IDL.Func([], [IDL.Vec(Student)], ['query']),
+  'getAllTeacherProfiles' : IDL.Func([], [IDL.Vec(TeacherProfile)], ['query']),
+  'getAvailableBooks' : IDL.Func([], [IDL.Vec(Book)], ['query']),
+  'getBooksByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Book)], ['query']),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getClassSchedulesByGrade' : IDL.Func(
@@ -60,35 +228,177 @@ export const idlService = IDL.Service({
       [IDL.Vec(ClassSchedule)],
       ['query'],
     ),
+  'getContactFormsByStatus' : IDL.Func(
+      [ContactStatus],
+      [IDL.Vec(ContactForm)],
+      ['query'],
+    ),
+  'getPhotoRecordsByCategory' : IDL.Func(
+      [PhotoCategory],
+      [IDL.Vec(PhotoRecord)],
+      ['query'],
+    ),
+  'getStudentBorrowingHistory' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(BorrowingRecord)],
+      ['query'],
+    ),
+  'getStudentExamResults' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(ExamResult)],
+      ['query'],
+    ),
+  'getStudentFeeRecords' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(FeeRecord)],
+      ['query'],
+    ),
+  'getStudentPaymentHistory' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(PaymentTransaction)],
+      ['query'],
+    ),
   'getStudentsByClass' : IDL.Func([IDL.Text], [IDL.Vec(Student)], ['query']),
   'getStudentsById' : IDL.Func([], [IDL.Vec(Student)], ['query']),
   'getStudentsByName' : IDL.Func([], [IDL.Vec(Student)], ['query']),
+  'getTeacherProfile' : IDL.Func(
+      [IDL.Text],
+      [IDL.Opt(TeacherProfile)],
+      ['query'],
+    ),
+  'getTeacherProfilesBySubject' : IDL.Func(
+      [IDL.Text],
+      [IDL.Vec(TeacherProfile)],
+      ['query'],
+    ),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
       ['query'],
     ),
   'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+  'recordPayment' : IDL.Func([PaymentTransaction], [], []),
   'removeAnnouncement' : IDL.Func([IDL.Nat], [], []),
+  'removeBook' : IDL.Func([IDL.Nat], [], []),
   'removeClassSchedule' : IDL.Func([IDL.Text], [], []),
   'removeEvent' : IDL.Func([IDL.Nat], [], []),
+  'removeExamResult' : IDL.Func([IDL.Text, IDL.Text], [], []),
+  'removeFeeRecord' : IDL.Func([IDL.Nat], [], []),
+  'removePhotoRecord' : IDL.Func([IDL.Nat], [], []),
   'removeStudent' : IDL.Func([IDL.Text], [], []),
+  'removeTeacherProfile' : IDL.Func([IDL.Text], [], []),
+  'returnBook' : IDL.Func([IDL.Nat], [], []),
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+  'submitContactForm' : IDL.Func([ContactForm], [], []),
+  'updateBook' : IDL.Func([Book], [], []),
+  'updateBorrowingStatus' : IDL.Func([IDL.Nat, BorrowStatus], [], []),
+  'updateContactStatus' : IDL.Func([IDL.Nat, ContactStatus], [], []),
+  'updateExamResult' : IDL.Func([ExamResult], [], []),
+  'updateFeeRecord' : IDL.Func([FeeRecord], [], []),
+  'updatePhotoRecord' : IDL.Func([PhotoRecord], [], []),
+  'updateTeacherProfile' : IDL.Func([TeacherProfile], [], []),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const _CaffeineStorageCreateCertificateResult = IDL.Record({
+    'method' : IDL.Text,
+    'blob_hash' : IDL.Text,
+  });
+  const _CaffeineStorageRefillInformation = IDL.Record({
+    'proposed_top_up_amount' : IDL.Opt(IDL.Nat),
+  });
+  const _CaffeineStorageRefillResult = IDL.Record({
+    'success' : IDL.Opt(IDL.Bool),
+    'topped_up_amount' : IDL.Opt(IDL.Nat),
+  });
+  const ExternalBlob = IDL.Vec(IDL.Nat8);
+  const Book = IDL.Record({
+    'id' : IDL.Nat,
+    'title' : IDL.Text,
+    'availableCopies' : IDL.Nat,
+    'thumbnail' : ExternalBlob,
+    'isbn' : IDL.Text,
+    'author' : IDL.Text,
+    'totalCopies' : IDL.Nat,
+    'category' : IDL.Text,
+  });
   const Time = IDL.Int;
+  const ExamResult = IDL.Record({
+    'studentId' : IDL.Text,
+    'subject' : IDL.Text,
+    'grade' : IDL.Text,
+    'examDate' : Time,
+    'examName' : IDL.Text,
+    'remarks' : IDL.Text,
+    'percentage' : IDL.Nat,
+  });
+  const FeeStatus = IDL.Variant({
+    'pending' : IDL.Null,
+    'paid' : IDL.Null,
+    'overdue' : IDL.Null,
+    'partial' : IDL.Null,
+  });
+  const FeeRecord = IDL.Record({
+    'id' : IDL.Nat,
+    'status' : FeeStatus,
+    'studentId' : IDL.Text,
+    'feeType' : IDL.Text,
+    'dueDate' : Time,
+    'description' : IDL.Text,
+    'paidDate' : IDL.Opt(Time),
+    'paidAmount' : IDL.Nat,
+    'amount' : IDL.Nat,
+  });
+  const PhotoCategory = IDL.Variant({
+    'achievements' : IDL.Null,
+    'events' : IDL.Null,
+    'facilities' : IDL.Null,
+    'general' : IDL.Null,
+  });
+  const PhotoRecord = IDL.Record({
+    'id' : IDL.Nat,
+    'title' : IDL.Text,
+    'description' : IDL.Text,
+    'timestamp' : Time,
+    'category' : PhotoCategory,
+    'image' : ExternalBlob,
+    'uploadedBy' : IDL.Text,
+  });
   const Student = IDL.Record({
     'id' : IDL.Text,
     'name' : IDL.Text,
+    'photo' : ExternalBlob,
     'className' : IDL.Text,
+  });
+  const TeacherProfile = IDL.Record({
+    'id' : IDL.Text,
+    'contactInfo' : IDL.Text,
+    'subjects' : IDL.Vec(IDL.Text),
+    'officeHours' : IDL.Text,
+    'name' : IDL.Text,
+    'qualifications' : IDL.Text,
+    'photo' : ExternalBlob,
   });
   const UserRole = IDL.Variant({
     'admin' : IDL.Null,
     'user' : IDL.Null,
     'guest' : IDL.Null,
+  });
+  const BorrowStatus = IDL.Variant({
+    'borrowed' : IDL.Null,
+    'overdue' : IDL.Null,
+    'returned' : IDL.Null,
+  });
+  const BorrowingRecord = IDL.Record({
+    'id' : IDL.Nat,
+    'status' : BorrowStatus,
+    'studentId' : IDL.Text,
+    'borrowDate' : Time,
+    'dueDate' : Time,
+    'bookId' : IDL.Nat,
+    'returnDate' : IDL.Opt(Time),
   });
   const Announcement = IDL.Record({
     'id' : IDL.Nat,
@@ -101,29 +411,114 @@ export const idlFactory = ({ IDL }) => {
     'grade' : IDL.Text,
     'schedule' : IDL.Vec(IDL.Text),
   });
+  const ContactStatus = IDL.Variant({
+    'new' : IDL.Null,
+    'read' : IDL.Null,
+    'replied' : IDL.Null,
+  });
+  const ContactForm = IDL.Record({
+    'id' : IDL.Nat,
+    'status' : ContactStatus,
+    'studentId' : IDL.Opt(IDL.Text),
+    'subject' : IDL.Text,
+    'message' : IDL.Text,
+    'timestamp' : Time,
+    'senderName' : IDL.Text,
+    'senderEmail' : IDL.Text,
+  });
   const Event = IDL.Record({
     'id' : IDL.Nat,
     'title' : IDL.Text,
     'date' : Time,
     'description' : IDL.Text,
   });
-  const UserProfile = IDL.Record({ 'name' : IDL.Text, 'role' : IDL.Text });
+  const PaymentTransaction = IDL.Record({
+    'id' : IDL.Nat,
+    'paymentMethod' : IDL.Text,
+    'studentId' : IDL.Text,
+    'paymentDate' : Time,
+    'amount' : IDL.Nat,
+    'transactionId' : IDL.Text,
+    'feeId' : IDL.Nat,
+  });
+  const UserProfile = IDL.Record({
+    'studentId' : IDL.Opt(IDL.Text),
+    'name' : IDL.Text,
+    'role' : IDL.Text,
+    'photo' : ExternalBlob,
+  });
   
   return IDL.Service({
+    '_caffeineStorageBlobIsLive' : IDL.Func(
+        [IDL.Vec(IDL.Nat8)],
+        [IDL.Bool],
+        ['query'],
+      ),
+    '_caffeineStorageBlobsToDelete' : IDL.Func(
+        [],
+        [IDL.Vec(IDL.Vec(IDL.Nat8))],
+        ['query'],
+      ),
+    '_caffeineStorageConfirmBlobDeletion' : IDL.Func(
+        [IDL.Vec(IDL.Vec(IDL.Nat8))],
+        [],
+        [],
+      ),
+    '_caffeineStorageCreateCertificate' : IDL.Func(
+        [IDL.Text],
+        [_CaffeineStorageCreateCertificateResult],
+        [],
+      ),
+    '_caffeineStorageRefillCashier' : IDL.Func(
+        [IDL.Opt(_CaffeineStorageRefillInformation)],
+        [_CaffeineStorageRefillResult],
+        [],
+      ),
+    '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
     'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
+    'addBook' : IDL.Func([Book], [], []),
     'addClassSchedule' : IDL.Func(
         [IDL.Text, IDL.Text, IDL.Vec(IDL.Text)],
         [],
         [],
       ),
     'addEvent' : IDL.Func([IDL.Text, IDL.Text, Time], [], []),
+    'addExamResult' : IDL.Func([ExamResult], [], []),
+    'addFeeRecord' : IDL.Func([FeeRecord], [], []),
+    'addPhotoRecord' : IDL.Func([PhotoRecord], [], []),
     'addStudent' : IDL.Func([Student], [], []),
+    'addTeacherProfile' : IDL.Func([TeacherProfile], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'borrowBook' : IDL.Func([IDL.Nat, IDL.Text, Time], [], []),
+    'deleteContactForm' : IDL.Func([IDL.Nat], [], []),
+    'getActiveBorrowings' : IDL.Func([], [IDL.Vec(BorrowingRecord)], ['query']),
     'getAllAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
+    'getAllBooks' : IDL.Func([], [IDL.Vec(Book)], ['query']),
+    'getAllBorrowingRecords' : IDL.Func(
+        [],
+        [IDL.Vec(BorrowingRecord)],
+        ['query'],
+      ),
     'getAllClassSchedules' : IDL.Func([], [IDL.Vec(ClassSchedule)], ['query']),
+    'getAllContactForms' : IDL.Func([], [IDL.Vec(ContactForm)], ['query']),
     'getAllEvents' : IDL.Func([], [IDL.Vec(Event)], ['query']),
+    'getAllExamResults' : IDL.Func([], [IDL.Vec(ExamResult)], ['query']),
+    'getAllFeeRecords' : IDL.Func([], [IDL.Vec(FeeRecord)], ['query']),
+    'getAllPaymentTransactions' : IDL.Func(
+        [],
+        [IDL.Vec(PaymentTransaction)],
+        ['query'],
+      ),
+    'getAllPhotoRecords' : IDL.Func([], [IDL.Vec(PhotoRecord)], ['query']),
     'getAllStudents' : IDL.Func([], [IDL.Vec(Student)], ['query']),
+    'getAllTeacherProfiles' : IDL.Func(
+        [],
+        [IDL.Vec(TeacherProfile)],
+        ['query'],
+      ),
+    'getAvailableBooks' : IDL.Func([], [IDL.Vec(Book)], ['query']),
+    'getBooksByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Book)], ['query']),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getClassSchedulesByGrade' : IDL.Func(
@@ -131,20 +526,75 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(ClassSchedule)],
         ['query'],
       ),
+    'getContactFormsByStatus' : IDL.Func(
+        [ContactStatus],
+        [IDL.Vec(ContactForm)],
+        ['query'],
+      ),
+    'getPhotoRecordsByCategory' : IDL.Func(
+        [PhotoCategory],
+        [IDL.Vec(PhotoRecord)],
+        ['query'],
+      ),
+    'getStudentBorrowingHistory' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(BorrowingRecord)],
+        ['query'],
+      ),
+    'getStudentExamResults' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(ExamResult)],
+        ['query'],
+      ),
+    'getStudentFeeRecords' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(FeeRecord)],
+        ['query'],
+      ),
+    'getStudentPaymentHistory' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(PaymentTransaction)],
+        ['query'],
+      ),
     'getStudentsByClass' : IDL.Func([IDL.Text], [IDL.Vec(Student)], ['query']),
     'getStudentsById' : IDL.Func([], [IDL.Vec(Student)], ['query']),
     'getStudentsByName' : IDL.Func([], [IDL.Vec(Student)], ['query']),
+    'getTeacherProfile' : IDL.Func(
+        [IDL.Text],
+        [IDL.Opt(TeacherProfile)],
+        ['query'],
+      ),
+    'getTeacherProfilesBySubject' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(TeacherProfile)],
+        ['query'],
+      ),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],
         ['query'],
       ),
     'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
+    'recordPayment' : IDL.Func([PaymentTransaction], [], []),
     'removeAnnouncement' : IDL.Func([IDL.Nat], [], []),
+    'removeBook' : IDL.Func([IDL.Nat], [], []),
     'removeClassSchedule' : IDL.Func([IDL.Text], [], []),
     'removeEvent' : IDL.Func([IDL.Nat], [], []),
+    'removeExamResult' : IDL.Func([IDL.Text, IDL.Text], [], []),
+    'removeFeeRecord' : IDL.Func([IDL.Nat], [], []),
+    'removePhotoRecord' : IDL.Func([IDL.Nat], [], []),
     'removeStudent' : IDL.Func([IDL.Text], [], []),
+    'removeTeacherProfile' : IDL.Func([IDL.Text], [], []),
+    'returnBook' : IDL.Func([IDL.Nat], [], []),
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
+    'submitContactForm' : IDL.Func([ContactForm], [], []),
+    'updateBook' : IDL.Func([Book], [], []),
+    'updateBorrowingStatus' : IDL.Func([IDL.Nat, BorrowStatus], [], []),
+    'updateContactStatus' : IDL.Func([IDL.Nat, ContactStatus], [], []),
+    'updateExamResult' : IDL.Func([ExamResult], [], []),
+    'updateFeeRecord' : IDL.Func([FeeRecord], [], []),
+    'updatePhotoRecord' : IDL.Func([PhotoRecord], [], []),
+    'updateTeacherProfile' : IDL.Func([TeacherProfile], [], []),
   });
 };
 

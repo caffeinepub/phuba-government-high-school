@@ -1,14 +1,15 @@
 # Specification
 
 ## Summary
-**Goal:** Create an interactive web application for Phuba Government High School that provides a central hub for students, teachers, and parents to access school information, including student directory, announcements, class schedules, and events.
+**Goal:** Add comprehensive school management features including photo galleries, teacher profiles, exam results portal, library system, fee payment tracking, and contact forms.
 
 **Planned changes:**
-- Build a welcome homepage with hero section introducing the school and app features
-- Implement a student directory with searchable/filterable list showing name, class, and student ID
-- Create an announcements section for posting and viewing school announcements with timestamps
-- Develop a class schedule viewer organized by grade/section displaying time slots, subjects, and teachers
-- Add an events calendar showing upcoming school events with dates, times, and descriptions
-- Apply an educational color theme (green and gold or navy and white) with professional, accessible layout and clear typography
+- Add photo gallery system with four categories (general, events, achievements, facilities) and admin management
+- Add teacher profiles displaying name, subjects, qualifications, contact info, photos, and office hours
+- Add exam results portal where students view their grades and administrators manage all results
+- Add library management system for tracking books and borrowing records
+- Add fee payment system for students to view obligations and administrators to record payments
+- Add public contact form for communication with the school and admin inbox for managing messages
+- Update navigation menu to include links to all new sections
 
-**User-visible outcome:** Users can visit the Phuba Government High School web app to view the student directory, read announcements, check class schedules, and see upcoming school events in a clean, professional interface designed for the educational environment.
+**User-visible outcome:** Students can view photo galleries, teacher profiles, their exam results, library catalog and borrowing history, fee obligations and payment history, and submit contact forms. Administrators can manage all these systems including uploading photos, creating teacher profiles, entering exam results, managing library books and borrowing, recording fee payments, and viewing contact messages.
