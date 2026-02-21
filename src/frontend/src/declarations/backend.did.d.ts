@@ -10,125 +10,22 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface Announcement {
-  'id' : bigint,
-  'title' : string,
-  'content' : string,
-  'timestamp' : Time,
-}
-export interface Book {
-  'id' : bigint,
-  'title' : string,
-  'availableCopies' : bigint,
-  'thumbnail' : ExternalBlob,
-  'isbn' : string,
-  'author' : string,
-  'totalCopies' : bigint,
-  'category' : string,
-}
-export type BorrowStatus = { 'borrowed' : null } |
-  { 'overdue' : null } |
-  { 'returned' : null };
-export interface BorrowingRecord {
-  'id' : bigint,
-  'status' : BorrowStatus,
-  'studentId' : string,
-  'borrowDate' : Time,
-  'dueDate' : Time,
-  'bookId' : bigint,
-  'returnDate' : [] | [Time],
-}
-export interface ClassSchedule {
-  'section' : string,
-  'grade' : string,
-  'schedule' : Array<string>,
-}
-export interface ContactForm {
-  'id' : bigint,
-  'status' : ContactStatus,
-  'studentId' : [] | [string],
-  'subject' : string,
-  'message' : string,
-  'timestamp' : Time,
-  'senderName' : string,
-  'senderEmail' : string,
-}
-export type ContactStatus = { 'new' : null } |
-  { 'read' : null } |
-  { 'replied' : null };
-export interface Event {
-  'id' : bigint,
-  'title' : string,
-  'date' : Time,
-  'description' : string,
-}
-export interface ExamResult {
-  'studentId' : string,
-  'subject' : string,
-  'grade' : string,
-  'examDate' : Time,
-  'examName' : string,
-  'remarks' : string,
-  'percentage' : bigint,
-}
 export type ExternalBlob = Uint8Array;
-export interface FeeRecord {
-  'id' : bigint,
-  'status' : FeeStatus,
-  'studentId' : string,
-  'feeType' : string,
-  'dueDate' : Time,
-  'description' : string,
-  'paidDate' : [] | [Time],
-  'paidAmount' : bigint,
-  'amount' : bigint,
-}
-export type FeeStatus = { 'pending' : null } |
-  { 'paid' : null } |
-  { 'overdue' : null } |
-  { 'partial' : null };
-export interface PaymentTransaction {
-  'id' : bigint,
-  'paymentMethod' : string,
-  'studentId' : string,
-  'paymentDate' : Time,
-  'amount' : bigint,
-  'transactionId' : string,
-  'feeId' : bigint,
-}
-export type PhotoCategory = { 'achievements' : null } |
-  { 'events' : null } |
-  { 'facilities' : null } |
-  { 'general' : null };
-export interface PhotoRecord {
+export interface Poem {
   'id' : bigint,
   'title' : string,
-  'description' : string,
-  'timestamp' : Time,
-  'category' : PhotoCategory,
-  'image' : ExternalBlob,
-  'uploadedBy' : string,
+  'createdBy' : Principal,
+  'culturalContext' : [] | [string],
+  'poemText' : string,
+  'author' : string,
+  'timestamp' : bigint,
+  'category' : string,
+  'dateWritten' : string,
+  'englishTranslation' : [] | [string],
 }
-export interface Student {
-  'id' : string,
-  'name' : string,
-  'photo' : ExternalBlob,
-  'className' : string,
-}
-export interface TeacherProfile {
-  'id' : string,
-  'contactInfo' : string,
-  'subjects' : Array<string>,
-  'officeHours' : string,
-  'name' : string,
-  'qualifications' : string,
-  'photo' : ExternalBlob,
-}
-export type Time = bigint;
 export interface UserProfile {
   'studentId' : [] | [string],
   'name' : string,
-  'role' : string,
   'photo' : ExternalBlob,
 }
 export type UserRole = { 'admin' : null } |
@@ -162,72 +59,33 @@ export interface _SERVICE {
   >,
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
   '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
-  'addAnnouncement' : ActorMethod<[string, string], undefined>,
-  'addBook' : ActorMethod<[Book], undefined>,
-  'addClassSchedule' : ActorMethod<[string, string, Array<string>], undefined>,
-  'addEvent' : ActorMethod<[string, string, Time], undefined>,
-  'addExamResult' : ActorMethod<[ExamResult], undefined>,
-  'addFeeRecord' : ActorMethod<[FeeRecord], undefined>,
-  'addPhotoRecord' : ActorMethod<[PhotoRecord], undefined>,
-  'addStudent' : ActorMethod<[Student], undefined>,
-  'addTeacherProfile' : ActorMethod<[TeacherProfile], undefined>,
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
-  'borrowBook' : ActorMethod<[bigint, string, Time], undefined>,
-  'deleteContactForm' : ActorMethod<[bigint], undefined>,
-  'getActiveBorrowings' : ActorMethod<[], Array<BorrowingRecord>>,
-  'getAllAnnouncements' : ActorMethod<[], Array<Announcement>>,
-  'getAllBooks' : ActorMethod<[], Array<Book>>,
-  'getAllBorrowingRecords' : ActorMethod<[], Array<BorrowingRecord>>,
-  'getAllClassSchedules' : ActorMethod<[], Array<ClassSchedule>>,
-  'getAllContactForms' : ActorMethod<[], Array<ContactForm>>,
-  'getAllEvents' : ActorMethod<[], Array<Event>>,
-  'getAllExamResults' : ActorMethod<[], Array<ExamResult>>,
-  'getAllFeeRecords' : ActorMethod<[], Array<FeeRecord>>,
-  'getAllPaymentTransactions' : ActorMethod<[], Array<PaymentTransaction>>,
-  'getAllPhotoRecords' : ActorMethod<[], Array<PhotoRecord>>,
-  'getAllStudents' : ActorMethod<[], Array<Student>>,
-  'getAllTeacherProfiles' : ActorMethod<[], Array<TeacherProfile>>,
-  'getAvailableBooks' : ActorMethod<[], Array<Book>>,
-  'getBooksByCategory' : ActorMethod<[string], Array<Book>>,
+  'createPoem' : ActorMethod<
+    [string, string, string, string, string, [] | [string], [] | [string]],
+    undefined
+  >,
+  'deletePoem' : ActorMethod<[bigint], undefined>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
-  'getClassSchedulesByGrade' : ActorMethod<[string], Array<ClassSchedule>>,
-  'getContactFormsByStatus' : ActorMethod<[ContactStatus], Array<ContactForm>>,
-  'getPhotoRecordsByCategory' : ActorMethod<
-    [PhotoCategory],
-    Array<PhotoRecord>
-  >,
-  'getStudentBorrowingHistory' : ActorMethod<[string], Array<BorrowingRecord>>,
-  'getStudentExamResults' : ActorMethod<[string], Array<ExamResult>>,
-  'getStudentFeeRecords' : ActorMethod<[string], Array<FeeRecord>>,
-  'getStudentPaymentHistory' : ActorMethod<[string], Array<PaymentTransaction>>,
-  'getStudentsByClass' : ActorMethod<[string], Array<Student>>,
-  'getStudentsById' : ActorMethod<[], Array<Student>>,
-  'getStudentsByName' : ActorMethod<[], Array<Student>>,
-  'getTeacherProfile' : ActorMethod<[string], [] | [TeacherProfile]>,
-  'getTeacherProfilesBySubject' : ActorMethod<[string], Array<TeacherProfile>>,
+  'getPoem' : ActorMethod<[bigint], [] | [Poem]>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
-  'recordPayment' : ActorMethod<[PaymentTransaction], undefined>,
-  'removeAnnouncement' : ActorMethod<[bigint], undefined>,
-  'removeBook' : ActorMethod<[bigint], undefined>,
-  'removeClassSchedule' : ActorMethod<[string], undefined>,
-  'removeEvent' : ActorMethod<[bigint], undefined>,
-  'removeExamResult' : ActorMethod<[string, string], undefined>,
-  'removeFeeRecord' : ActorMethod<[bigint], undefined>,
-  'removePhotoRecord' : ActorMethod<[bigint], undefined>,
-  'removeStudent' : ActorMethod<[string], undefined>,
-  'removeTeacherProfile' : ActorMethod<[string], undefined>,
-  'returnBook' : ActorMethod<[bigint], undefined>,
+  'listPoems' : ActorMethod<[], Array<Poem>>,
+  'listPoemsByCategory' : ActorMethod<[string], Array<Poem>>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
-  'submitContactForm' : ActorMethod<[ContactForm], undefined>,
-  'updateBook' : ActorMethod<[Book], undefined>,
-  'updateBorrowingStatus' : ActorMethod<[bigint, BorrowStatus], undefined>,
-  'updateContactStatus' : ActorMethod<[bigint, ContactStatus], undefined>,
-  'updateExamResult' : ActorMethod<[ExamResult], undefined>,
-  'updateFeeRecord' : ActorMethod<[FeeRecord], undefined>,
-  'updatePhotoRecord' : ActorMethod<[PhotoRecord], undefined>,
-  'updateTeacherProfile' : ActorMethod<[TeacherProfile], undefined>,
+  'updatePoem' : ActorMethod<
+    [
+      bigint,
+      string,
+      string,
+      string,
+      string,
+      string,
+      [] | [string],
+      [] | [string],
+    ],
+    undefined
+  >,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

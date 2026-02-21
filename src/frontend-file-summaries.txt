@@ -1,13 +1,13 @@
 {
-  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining all routes (home, students, announcements, schedules, events) and wrapping the app with ThemeProvider, Layout, ProfileSetupModal, and Toaster components.",
-  "frontend/src/components/Layout.tsx": "Reusable layout component with responsive header/navigation, school branding with logo, authentication button, mobile menu, and footer with social links and caffeine.ai attribution.",
-  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without a profile to enter their name and optional student ID on first login, creating a UserProfile with empty photo blob using the authorization system.",
-  "frontend/src/pages/HomePage.tsx": "Landing page featuring hero section with school logo and background image, interactive feature cards for navigation, and statistics section showcasing school metrics.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for home and Poumai Poems pages, wrapped with ThemeProvider, Layout, ProfileSetupModal, and Toaster components.",
+  "frontend/src/components/Layout.tsx": "Reusable layout component with responsive header/navigation for Poumai Poems, school branding with logo, authentication button, mobile menu, and footer with social links and caffeine.ai attribution.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog that prompts authenticated users without a profile to enter their name and optional student ID on first login, creating a UserProfile with empty photo blob.",
+  "frontend/src/pages/HomePage.tsx": "Landing page featuring hero section with school logo, cultural heritage focus on Poumai poetry, feature cards highlighting traditional and modern poems, and about section describing the collection.",
   "frontend/src/pages/StudentDirectoryPage.tsx": "Student directory page with authentication guard, search functionality, class filtering, and responsive card grid displaying student information from the backend.",
   "frontend/src/pages/AnnouncementsPage.tsx": "Announcements page with authentication guard, chronological list of announcements, and admin-only create announcement dialog with form validation.",
   "frontend/src/pages/ClassSchedulePage.tsx": "Class schedules page with authentication guard, grade filtering, and card grid displaying schedule entries organized by grade and section.",
   "frontend/src/pages/EventsPage.tsx": "Events calendar page with authentication guard, upcoming event badges, admin-only create event dialog with date/time picker, and responsive event cards.",
-  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profiles, students, announcements, class schedules, and events with proper caching and invalidation.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for backend operations including user profiles and Poumai poems CRUD operations with proper caching and invalidation.",
   "frontend/src/index.css": "Global styles with OKLCH color system implementing navy blue and gold educational theme for both light and dark modes with proper contrast ratios.",
   "frontend/tailwind.config.js": "Tailwind configuration extending the theme with educational color palette (navy/gold), custom fonts (Inter), enhanced shadows, and consistent border radius values.",
   "frontend/public/manifest.json": "Web App Manifest file defining PWA metadata including app name, icons, theme colors, and display mode for Phuba Government High School.",
@@ -16,5 +16,6 @@
   "frontend/src/main.tsx": "Application entry point with React initialization, providers setup, and service worker registration logic for PWA functionality.",
   "frontend/src/pages/FeesPage.tsx": "Fee management page displaying student fee records with outstanding balance dashboard, payment history table, and admin controls for adding fees and recording payments with proper status indicators for overdue fees.",
   "frontend/src/pages/ContactPage.tsx": "Publicly accessible contact page with form for submitting messages (pre-filled for authenticated users), school contact information including phone, email, address, and office hours displayed in cards.",
-  "frontend/src/pages/ContactInboxPage.tsx": "Admin-only contact messages inbox page displaying all submitted contact forms in a table with status filtering (new/read/replied), message viewing dialog, and status update/delete functionality."
+  "frontend/src/pages/ContactInboxPage.tsx": "Admin-only contact messages inbox page displaying all submitted contact forms in a table with status filtering (new/read/replied), message viewing dialog, and status update/delete functionality.",
+  "frontend/src/pages/PoumaiPoemsPage.tsx": "Poumai Poems page displaying a collection of poems in a responsive grid layout with category filtering, authentication guard, and admin-only CRUD operations (add, edit, delete) with form validation and toast notifications."
 }

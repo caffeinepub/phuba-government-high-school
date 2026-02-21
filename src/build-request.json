@@ -1,295 +1,127 @@
 {
   "kind": "build_request",
-  "title": "Add advanced school management features with photo galleries, teacher profiles, exam results, library system, fee payment, and contact forms",
+  "title": "Create Poumai Poems cultural literary section with admin management",
   "projectName": "Phuba Government High School",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-12",
-      "text": "Create a photo gallery system with four categories: general school photos, events, achievements, and facilities. Implement backend data models and CRUD operations for storing photo records with fields for title, description, category, imageUrl, uploadedBy, and timestamp.",
+      "id": "REQ-25",
+      "text": "Create a frontend Poumai Poems page (frontend/src/pages/PoumaiPoemsPage.tsx) displaying a collection of Poumai poems in a grid layout with category/theme filtering capability. Each poem card should display: title, author, poem text (with appropriate formatting for line breaks), date written, category/theme, and optional English translation with cultural/historical context.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-assistant-poumai-poems-build"
+        ],
+        "quotes": [
+          "A dedicated Poumai Poems page displaying the collection in an elegant layout",
+          "Each poem showing: title, author, the poem text, date written, category/theme, and optional English translation with cultural/historical context"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Poumai Poems page displays poems in a responsive grid layout",
+        "Category/theme filter allows users to filter poems by category",
+        "Each poem card shows title, author, poem text with preserved formatting, date written, category, and optional English translation",
+        "Cultural/historical context is displayed when available",
+        "Page follows the existing navy and gold educational theme"
+      ]
+    },
+    {
+      "id": "REQ-26",
+      "text": "Implement backend Motoko data models and CRUD operations for Poumai poems in backend/main.mo. Create a Poem type with fields: id (Nat), title (Text), author (Text), poemText (Text), dateWritten (Text), category (Text), englishTranslation (?Text), culturalContext (?Text), createdBy (Principal), and timestamp (Int). Implement functions: createPoem (admin only), updatePoem (admin only), deletePoem (admin only), getPoem (public), listPoems (public), and listPoemsByCategory (public).",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-assistant-poumai-poems-build"
         ],
         "quotes": [
-          "Photo Galleries with admin management for general school photos, events, achievements, and facilities"
+          "Backend (Motoko) - Complete data models and CRUD operations with role-based access (public viewing, admin management)"
         ]
       },
       "acceptanceCriteria": [
-        "Backend supports creating, reading, updating, and deleting photo records",
-        "Photos are categorized into: general, events, achievements, facilities",
-        "Each photo record includes title, description, category, imageUrl, uploadedBy principal, and timestamp",
-        "Only authenticated administrators can upload and manage photos"
+        "Poem type includes all required fields with appropriate types",
+        "Create, update, and delete operations require admin role",
+        "All users can view poems and list poems",
+        "List poems by category function filters poems correctly",
+        "Poems are stored persistently with stable storage"
       ]
     },
     {
-      "id": "REQ-13",
-      "text": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
+      "id": "REQ-27",
+      "text": "Create an admin interface within the Poumai Poems page for managing poems. Include a dialog form with fields for title, author, poem text (textarea with line break support), date written (date picker), category (dropdown or text input), optional English translation (textarea), and optional cultural context (textarea). Implement add, edit, and delete functionality accessible only to admin users.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-assistant-poumai-poems-build"
         ],
         "quotes": [
-          "Photo Galleries with admin management for general school photos, events, achievements, and facilities"
+          "Admin interface where authorized users can add, edit, and delete poems",
+          "Full admin interface where authorized users can add, edit, and delete poems"
         ]
       },
       "acceptanceCriteria": [
-        "Photo gallery page displays photos in a responsive grid layout",
-        "Users can filter photos by category (general, events, achievements, facilities)",
-        "Each photo shows title, description, and full image",
-        "Administrators see an upload button that opens a form modal",
-        "Upload form includes fields for title, description, category selection, and image file input",
-        "Photos are stored in frontend/public/assets/photos and referenced by URL"
+        "Admin users see 'Add Poem' button on the Poumai Poems page",
+        "Dialog form includes all required fields with appropriate input types",
+        "Poem text textarea preserves line breaks and formatting",
+        "Edit and delete buttons appear on poem cards for admin users",
+        "Form validation ensures required fields are filled",
+        "Success/error notifications appear after operations"
       ]
     },
     {
-      "id": "REQ-14",
-      "text": "Create a teacher profiles system with backend data models and CRUD operations for storing teacher records with fields for name, subjects (array), qualifications, contactInfo, photoUrl, and officeHours.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Teacher Profiles including name, subjects, qualifications, contact info, photos, and office hours"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend supports creating, reading, updating, and deleting teacher profiles",
-        "Each teacher profile includes name, array of subjects taught, qualifications text, contact info, photo URL, and office hours",
-        "Only authenticated administrators can create, update, or delete teacher profiles",
-        "All authenticated users can view teacher profiles"
-      ]
-    },
-    {
-      "id": "REQ-15",
-      "text": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
+      "id": "REQ-28",
+      "text": "Add a 'Poumai Poems' navigation link to the Layout component (frontend/src/components/Layout.tsx) navigation menu. Style the link consistently with existing navigation items using the navy and gold educational theme. Add the route configuration to App.tsx with path '/poumai-poems'.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-assistant-poumai-poems-build"
         ],
         "quotes": [
-          "Teacher Profiles including name, subjects, qualifications, contact info, photos, and office hours"
+          "Navigation Integration - Adding 'Poumai Poems' link to your existing menu, styled with your navy and gold educational theme"
         ]
       },
       "acceptanceCriteria": [
-        "Teacher profiles page displays all teachers in a responsive card grid",
-        "Each card shows teacher photo, name, subjects, qualifications, contact info, and office hours",
-        "Administrators see buttons to add new teachers and edit existing profiles",
-        "Teacher form includes inputs for name, subjects (multi-select or comma-separated), qualifications, contact info, photo URL, and office hours",
-        "Teacher photos are stored in frontend/public/assets/teachers"
+        "Poumai Poems link appears in both desktop and mobile navigation menus",
+        "Link styling matches existing navigation items",
+        "Route is properly configured in App.tsx",
+        "Clicking the link navigates to the Poumai Poems page"
       ]
     },
     {
-      "id": "REQ-16",
-      "text": "Create an exam results portal with backend data models for storing exam records with fields for studentId, examName, subject, grade, percentage, examDate, and remarks. Implement CRUD operations with role-based access where students can only view their own results and administrators can manage all results.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Exam results portal for students to view their grades"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend stores exam results with studentId, examName, subject, grade, percentage, examDate, and remarks",
-        "Students can only query and view their own exam results based on their authenticated principal/studentId",
-        "Administrators can create, update, delete, and view all exam results",
-        "Results can be filtered by student, subject, and date range"
-      ]
-    },
-    {
-      "id": "REQ-17",
-      "text": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
+      "id": "REQ-29",
+      "text": "Create React Query hooks in frontend/src/hooks/useQueries.ts for Poumai poems operations: usePoems (fetch all poems), usePoemsByCategory (fetch poems by category), useCreatePoem (create new poem), useUpdatePoem (update existing poem), and useDeletePoem (delete poem). Ensure proper query invalidation after mutations.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-assistant-poumai-poems-build"
         ],
         "quotes": [
-          "Exam results portal for students to view their grades"
+          "Backend (Motoko) - Complete data models and CRUD operations with role-based access"
         ]
       },
       "acceptanceCriteria": [
-        "Students see a table of their own exam results when authenticated",
-        "Results table shows exam name, subject, grade, percentage, date, and remarks",
-        "Students can filter their results by subject or date range",
-        "Administrators see all results and have buttons to add/edit results",
-        "Admin form includes student selection, exam name, subject, grade, percentage, date, and remarks inputs"
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "text": "Create a library management system with backend data models for books (title, author, isbn, category, availableCopies, totalCopies) and borrowing records (bookId, studentId, borrowDate, dueDate, returnDate, status). Implement CRUD operations for books and borrowing records with role-based access where students can view books and their borrowing history, and administrators can manage books and all borrowing records.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Library management system for tracking books and borrowing"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend stores book records with title, author, isbn, category, availableCopies, and totalCopies",
-        "Backend stores borrowing records with bookId, studentId, borrowDate, dueDate, returnDate, and status (borrowed/returned/overdue)",
-        "Students can view all books and their own borrowing history",
-        "Administrators can add/edit/delete books and manage all borrowing records",
-        "System tracks available copies and prevents borrowing when availableCopies is zero"
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "text": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Library management system for tracking books and borrowing"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Library page shows a searchable catalog of all books with availability status",
-        "Students see their current borrowed books with due dates and borrowing history",
-        "Students can see which books are available to borrow",
-        "Administrators see buttons to add new books and manage inventory",
-        "Administrators can record book borrowing and returns with student selection and date inputs",
-        "System visually indicates overdue books"
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "text": "Create a fee payment system with backend data models for fee records (studentId, feeType, amount, dueDate, paidAmount, paidDate, status, description) and payment transactions (feeId, studentId, amount, paymentDate, paymentMethod, transactionId). Implement CRUD operations where students can view their fee obligations and payment history, and administrators can manage fees and record payments.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Fee payment system for tuition and other payments"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend stores fee records with studentId, feeType, amount, dueDate, paidAmount, paidDate, status (pending/partial/paid), and description",
-        "Backend stores payment transactions with feeId, studentId, amount, paymentDate, paymentMethod, and transactionId",
-        "Students can view their own fees and payment history",
-        "Administrators can create fees for students, record payments, and view all financial records",
-        "System calculates outstanding balances and tracks payment status"
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "text": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Fee payment system for tuition and other payments"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Students see a dashboard showing total outstanding balance and payment history",
-        "Fees are displayed in a table with type, amount, due date, amount paid, and status",
-        "Students see visual indicators for overdue fees",
-        "Administrators can create new fees for students with fee type, amount, due date, and description",
-        "Administrators can record payments with student selection, fee selection, amount, payment method, and transaction ID",
-        "Payment history shows all transactions with dates and methods"
-      ]
-    },
-    {
-      "id": "REQ-22",
-      "text": "Create a contact form system with backend data models for storing contact messages with fields for senderName, senderEmail, subject, message, timestamp, status (new/read/replied), and optional studentId for authenticated users. Implement operations where anyone can submit contact forms and administrators can view and manage all messages.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Contact forms for communication with the school"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Backend stores contact messages with senderName, senderEmail, subject, message, timestamp, status, and optional studentId",
-        "Unauthenticated users can submit contact forms",
-        "Authenticated users can submit contact forms with their studentId automatically attached",
-        "Administrators can view all contact messages and update their status",
-        "Messages are timestamped and can be filtered by status"
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "text": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ],
-        "quotes": [
-          "Contact forms for communication with the school"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Contact page is publicly accessible without authentication",
-        "Form includes required fields for name, email, subject, and message",
-        "Authenticated users have name and email pre-filled from their profile",
-        "Form shows success message after submission",
-        "Administrators see a messages inbox page with all contact submissions",
-        "Admin inbox displays messages in a table with filters for status (new/read/replied)",
-        "Administrators can click messages to view full content and update status"
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "text": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Navigation menu includes links to Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact pages",
-        "New navigation items match the existing styling and theme",
-        "Mobile menu includes all new navigation items",
-        "Navigation highlights the active page"
+        "All React Query hooks are properly typed with TypeScript",
+        "Hooks handle loading and error states",
+        "Mutations invalidate relevant queries to refresh data",
+        "Hooks integrate with the backend actor from useActor hook"
       ]
     }
   ],
   "constraints": [
-    "Maintain single-actor Motoko architecture in backend/main.mo",
-    "Do not modify immutable frontend paths: useInternetIdentity.ts, useInternetIdentity.tsx, useActor.ts, main.tsx, components/ui",
-    "Use existing MixinAuthorization pattern for role-based access control",
-    "Maintain existing navy and gold educational theme with OKLCH color system",
-    "Follow existing patterns for React Query hooks and TanStack Router",
-    "Keep PWA functionality intact (manifest.json, service worker, meta tags)"
+    "Maintain single-actor architecture in backend/main.mo",
+    "Do not modify immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
+    "Use existing navy and gold educational theme colors from frontend/index.css",
+    "Follow existing authentication and authorization patterns from other pages",
+    "Use React Query for all data fetching and mutations"
   ],
   "nonGoals": [
-    "Integration with external payment processors like Stripe or PayPal",
-    "Real-time notifications or WebSocket connections",
-    "Email sending functionality for contact forms",
-    "SMS notifications for overdue fees or library books",
-    "Integration with external identity providers beyond Internet Identity",
-    "Mobile-specific native features beyond PWA capabilities",
-    "Third-party APIs for book information or ISBN lookup"
+    "Adding external poetry databases or APIs",
+    "Implementing advanced text formatting beyond basic line breaks",
+    "Adding audio recordings or multimedia for poems",
+    "Creating public submission forms for poems (admin-only management)",
+    "Implementing versioning or revision history for poems"
   ],
   "imageRequirements": {
-    "required": [
-      "Professional teacher profile placeholder photo with neutral professional background (teacher-placeholder.dim_400x400.png)",
-      "Modern library books icon illustration with educational styling (library-icon.dim_200x200.png)",
-      "Academic achievement badge icon with gold accent matching theme (achievement-badge.dim_150x150.png)",
-      "School building facade photo representing facilities (school-building.dim_800x600.png)",
-      "Graduation cap and books illustration for exam results header (exam-header.dim_600x300.png)",
-      "Payment success checkmark icon with navy and gold colors (payment-icon.dim_128x128.png)",
-      "Contact envelope icon with modern design (contact-icon.dim_128x128.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

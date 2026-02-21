@@ -1,5 +1,5 @@
 import { Link, useNavigate, useRouterState } from '@tanstack/react-router';
-import { Menu, X, GraduationCap } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useInternetIdentity } from '../hooks/useInternetIdentity';
@@ -39,23 +39,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/students', label: 'Students' },
-    { to: '/teachers', label: 'Teachers' },
-    { to: '/announcements', label: 'Announcements' },
-    { to: '/schedules', label: 'Schedules' },
-    { to: '/events', label: 'Events' },
-    { to: '/photos', label: 'Gallery' },
-    { to: '/exam-results', label: 'Exam Results' },
-    { to: '/library', label: 'Library' },
-    { to: '/fees', label: 'Fees' },
-    { to: '/contact', label: 'Contact' },
+    { to: '/poumai-poems', label: 'Poumai Poems' },
   ];
 
-  const adminLinks = isAdmin
-    ? [{ to: '/admin/contact-inbox', label: 'Messages' }]
-    : [];
-
-  const allLinks = [...navLinks, ...adminLinks];
+  const allLinks = [...navLinks];
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -66,7 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Logo and School Name */}
             <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <GraduationCap className="w-6 h-6 text-primary-foreground" />
+                <BookOpen className="w-6 h-6 text-primary-foreground" />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-lg font-bold text-foreground leading-tight">
@@ -80,7 +67,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.slice(0, 6).map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
@@ -166,12 +153,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                  <GraduationCap className="w-5 h-5 text-primary-foreground" />
+                  <BookOpen className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <h3 className="font-bold text-foreground">PGHS</h3>
               </div>
               <p className="text-sm text-muted-foreground">
-                Phuba Government High School - Excellence in Education
+                Phuba Government High School - Celebrating Poumai Cultural Heritage
               </p>
             </div>
 
@@ -180,23 +167,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <h3 className="font-semibold text-foreground mb-3">Quick Links</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <Link to="/students" className="hover:text-foreground transition-colors">
-                    Student Directory
+                  <Link to="/" className="hover:text-foreground transition-colors">
+                    Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/teachers" className="hover:text-foreground transition-colors">
-                    Teachers
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/library" className="hover:text-foreground transition-colors">
-                    Library
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-foreground transition-colors">
-                    Contact Us
+                  <Link to="/poumai-poems" className="hover:text-foreground transition-colors">
+                    Poumai Poems
                   </Link>
                 </li>
               </ul>

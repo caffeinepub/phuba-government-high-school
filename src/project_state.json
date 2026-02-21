@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 11,
+  "projectStateVersion": 13,
   "summary": "Interactive app for Phuba Government High School",
   "architectural_notes": [
     "PWA implementation required: manifest.json, service worker, and installability features",
     "Role-based access control required for different user types (students, teachers, parents, administrators)",
     "Photo upload and storage system needed for galleries and teacher profiles",
-    "Payment gateway integration required for fee payment system"
+    "Payment gateway integration required for fee payment system",
+    "Poumai poems section requires text storage and display with support for both Poumai language and optional English translations"
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Professional teacher profile placeholder photo with neutral professional background (teacher-placeholder.dim_400x400.png)\n- Modern library books icon illustration with educational styling (library-icon.dim_200x200.png)\n- Academic achievement badge icon with gold accent matching theme (achievement-badge.dim_150x150.png)\n- School building facade photo representing facilities (school-building.dim_800x600.png)\n- Graduation cap and books illustration for exam results header (exam-header.dim_600x300.png)\n- Payment success checkmark icon with navy and gold colors (payment-icon.dim_128x128.png)\n- Contact envelope icon with modern design (contact-icon.dim_128x128.png)",
   "existing_features": [
     {
       "id": "feature-create-a-welcome-homepage-that-displays-the-school-name-phuba-government-high-school-with-a-hero-section-introducing-the-interactive-features-of-the-app",
@@ -147,6 +147,38 @@
         "REQ-24"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-create-a-frontend-poumai-poems-page-frontend-src-pages-poumaipoemspage-tsx-displaying-a-collection-of-poumai-poems-in-a-grid-layout-with-category-theme-filtering-capability-each-poem-card-should-display-title-author-poem-text-with-appropriate-formatting-for-line-breaks-date-written-category-theme-and-optional-english-translation-with-cultural-historical-context",
+      "title": "Create a frontend Poumai Poems page (frontend/src/pages/PoumaiPoemsPage.tsx) displaying a collection of Poumai poems in a grid layout with category/theme filtering capability. Each poem card should display: title, author, poem text (with appropriate formatting for line breaks), date written, category/theme, and optional English translation with cultural/historical context.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-interface-within-the-poumai-poems-page-for-managing-poems-include-a-dialog-form-with-fields-for-title-author-poem-text-textarea-with-line-break-support-date-written-date-picker-category-dropdown-or-text-input-optional-english-translation-textarea-and-optional-cultural-context-textarea-implement-add-edit-and-delete-functionality-accessible-only-to-admin-users",
+      "title": "Create an admin interface within the Poumai Poems page for managing poems. Include a dialog form with fields for title, author, poem text (textarea with line break support), date written (date picker), category (dropdown or text input), optional English translation (textarea), and optional cultural context (textarea). Implement add, edit, and delete functionality accessible only to admin users.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-poumai-poems-navigation-link-to-the-layout-component-frontend-src-components-layout-tsx-navigation-menu-style-the-link-consistently-with-existing-navigation-items-using-the-navy-and-gold-educational-theme-add-the-route-configuration-to-app-tsx-with-path-poumai-poems",
+      "title": "Add a 'Poumai Poems' navigation link to the Layout component (frontend/src/components/Layout.tsx) navigation menu. Style the link consistently with existing navigation items using the navy and gold educational theme. Add the route configuration to App.tsx with path '/poumai-poems'.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-react-query-hooks-in-frontend-src-hooks-usequeries-ts-for-poumai-poems-operations-usepoems-fetch-all-poems-usepoemsbycategory-fetch-poems-by-category-usecreatepoem-create-new-poem-useupdatepoem-update-existing-poem-and-usedeletepoem-delete-poem-ensure-proper-query-invalidation-after-mutations",
+      "title": "Create React Query hooks in frontend/src/hooks/useQueries.ts for Poumai poems operations: usePoems (fetch all poems), usePoemsByCategory (fetch poems by category), useCreatePoem (create new poem), useUpdatePoem (update existing poem), and useDeletePoem (delete poem). Ensure proper query invalidation after mutations.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -245,6 +277,38 @@
       "summary": "Create a contact form system with backend data models for storing contact messages with fields for senderName, senderEmail, subject, message, timestamp, status (new/read/replied), and optional studentId for authenticated users. Implement operations where anyone can submit contact forms and administrators can view and manage all messages.",
       "reqIds": [
         "REQ-22"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Create a Poumai Poems section integrated into the website with frontend page displaying poem collection in grid layout with category/theme filtering and individual poem cards showing title, author, poem text, date written, category, and optional English translation with cultural context",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Implement backend data models and CRUD operations for Poumai poems with fields for title, author, poemText, dateWritten, category, englishTranslation, culturalContext, and role-based access (public viewing, admin management)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Create admin interface for managing Poumai poems with forms for adding, editing, and deleting poems with all required fields",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Add 'Poumai Poems' navigation link to existing menu styled consistently with navy and gold educational theme",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Implement backend Motoko data models and CRUD operations for Poumai poems in backend/main.mo. Create a Poem type with fields: id (Nat), title (Text), author (Text), poemText (Text), dateWritten (Text), category (Text), englishTranslation (?Text), culturalContext (?Text), createdBy (Principal), and timestamp (Int). Implement functions: createPoem (admin only), updatePoem (admin only), deletePoem (admin only), getPoem (public), listPoems (public), and listPoemsByCategory (public).",
+      "reqIds": [
+        "REQ-26"
       ],
       "status": "pending"
     }

@@ -1,44 +1,9 @@
 import { Link } from '@tanstack/react-router';
-import { Users, Megaphone, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 export default function HomePage() {
-  const features = [
-    {
-      icon: Users,
-      title: 'Student Directory',
-      description: 'Browse and search through our comprehensive student database with class information.',
-      link: '/students',
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-100 dark:bg-blue-950',
-    },
-    {
-      icon: Megaphone,
-      title: 'Announcements',
-      description: 'Stay updated with the latest school news, notices, and important announcements.',
-      link: '/announcements',
-      color: 'text-amber-600 dark:text-amber-400',
-      bgColor: 'bg-amber-100 dark:bg-amber-950',
-    },
-    {
-      icon: Clock,
-      title: 'Class Schedules',
-      description: 'View detailed class schedules organized by grade and section for easy planning.',
-      link: '/schedules',
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-100 dark:bg-green-950',
-    },
-    {
-      icon: Calendar,
-      title: 'Events Calendar',
-      description: 'Keep track of upcoming school events, activities, and important dates.',
-      link: '/events',
-      color: 'text-purple-600 dark:text-purple-400',
-      bgColor: 'bg-purple-100 dark:bg-purple-950',
-    },
-  ];
-
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -65,18 +30,15 @@ export default function HomePage() {
               Phuba Government High School
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Your comprehensive portal for student information, announcements, schedules, and school events.
-              Stay connected with our vibrant academic community.
+              Celebrating and preserving the rich cultural heritage of the Poumai people through poetry and literature.
+              Explore our collection of traditional and modern Poumai poems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="text-base">
-                <Link to="/students">
-                  Explore Students
+                <Link to="/poumai-poems">
+                  Explore Poems
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-base">
-                <Link to="/announcements">View Announcements</Link>
               </Button>
             </div>
           </div>
@@ -86,56 +48,71 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Interactive Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Poumai Cultural Heritage</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Access all the tools and information you need in one convenient location
+            Discover the beauty and depth of Poumai poetry, preserving our traditions for future generations
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <Card
-                key={feature.title}
-                className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50"
-              >
-                <CardHeader>
-                  <div className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4`}>
-                    <Icon className={`w-6 h-6 ${feature.color}`} />
-                  </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                  <CardDescription className="text-base">{feature.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button asChild variant="ghost" className="group-hover:translate-x-1 transition-transform">
-                    <Link to={feature.link}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50">
+            <CardHeader>
+              <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-950 flex items-center justify-center mb-4">
+                <BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              </div>
+              <CardTitle className="text-xl">Traditional Poems</CardTitle>
+              <CardDescription className="text-base">
+                Explore ancient Poumai poetry passed down through generations, preserving our oral traditions
+              </CardDescription>
+            </CardHeader>
+          </Card>
+
+          <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50">
+            <CardHeader>
+              <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-950 flex items-center justify-center mb-4">
+                <Heart className="w-6 h-6 text-green-600 dark:text-green-400" />
+              </div>
+              <CardTitle className="text-xl">Modern Expressions</CardTitle>
+              <CardDescription className="text-base">
+                Contemporary Poumai poetry that bridges tradition with modern themes and experiences
+              </CardDescription>
+            </CardHeader>
+          </Card>
+
+          <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border/50">
+            <CardHeader>
+              <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-950 flex items-center justify-center mb-4">
+                <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+              </div>
+              <CardTitle className="text-xl">Cultural Context</CardTitle>
+              <CardDescription className="text-base">
+                Learn about the historical and cultural significance behind each poem and its meaning
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild size="lg" variant="outline">
+            <Link to="/poumai-poems">
+              View Full Collection
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* About Section */}
       <section className="bg-muted/30 border-y border-border/40 py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {[
-              { label: 'Students', value: '1000+' },
-              { label: 'Teachers', value: '50+' },
-              { label: 'Classes', value: '30+' },
-              { label: 'Events/Year', value: '100+' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-foreground mb-4">About Our Collection</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              This digital archive serves as a living repository of Poumai poetry, featuring works that span
+              traditional oral literature to contemporary written expressions. Each poem is presented with its
+              original text, English translations where available, and cultural context to help preserve and share
+              our rich literary heritage with the world.
+            </p>
           </div>
         </div>
       </section>

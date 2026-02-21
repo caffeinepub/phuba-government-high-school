@@ -1,173 +1,77 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-20T09:26:21.720Z",
+  "generatedAt": "2026-02-21T13:20:36.571Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 13,
-    "implemented": 7,
+    "total": 5,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-12",
-        "summary": "Create a photo gallery system with four categories: general school photos, events, achievements, and facilities. Implement backend data models and CRUD operations for storing photo records with fields for title, description, category, imageUrl, uploadedBy, and timestamp.",
+        "id": "REQ-25",
+        "summary": "Create a frontend Poumai Poems page (frontend/src/pages/PoumaiPoemsPage.tsx) displaying a collection of Poumai poems in a grid layout with category/theme filtering capability. Each poem card should display: title, author, poem text (with appropriate formatting for line breaks), date written, category/theme, and optional English translation with cultural/historical context.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/PoumaiPoemsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/PoumaiPoemsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-26",
+        "summary": "Implement backend Motoko data models and CRUD operations for Poumai poems in backend/main.mo. Create a Poem type with fields: id (Nat), title (Text), author (Text), poemText (Text), dateWritten (Text), category (Text), englishTranslation (?Text), culturalContext (?Text), createdBy (Principal), and timestamp (Int). Implement functions: createPoem (admin only), updatePoem (admin only), deletePoem (admin only), getPoem (public), listPoems (public), and listPoemsByCategory (public).",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-13",
-        "summary": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
+        "id": "REQ-27",
+        "summary": "Create an admin interface within the Poumai Poems page for managing poems. Include a dialog form with fields for title, author, poem text (textarea with line break support), date written (date picker), category (dropdown or text input), optional English translation (textarea), and optional cultural context (textarea). Implement add, edit, and delete functionality accessible only to admin users.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/PhotoGalleryPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
+          "frontend/src/pages/PoumaiPoemsPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/PhotoGalleryPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/pages/PoumaiPoemsPage.tsx"
         ]
       },
       {
-        "id": "REQ-14",
-        "summary": "Create a teacher profiles system with backend data models and CRUD operations for storing teacher records with fields for name, subjects (array), qualifications, contactInfo, photoUrl, and officeHours.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-15",
-        "summary": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
+        "id": "REQ-28",
+        "summary": "Add a 'Poumai Poems' navigation link to the Layout component (frontend/src/components/Layout.tsx) navigation menu. Style the link consistently with existing navigation items using the navy and gold educational theme. Add the route configuration to App.tsx with path '/poumai-poems'.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/TeachersPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/TeachersPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
         ]
       },
       {
-        "id": "REQ-16",
-        "summary": "Create an exam results portal with backend data models for storing exam records with fields for studentId, examName, subject, grade, percentage, examDate, and remarks. Implement CRUD operations with role-based access where students can only view their own results and administrators can manage all results.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-17",
-        "summary": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
+        "id": "REQ-29",
+        "summary": "Create React Query hooks in frontend/src/hooks/useQueries.ts for Poumai poems operations: usePoems (fetch all poems), usePoemsByCategory (fetch poems by category), useCreatePoem (create new poem), useUpdatePoem (update existing poem), and useDeletePoem (delete poem). Ensure proper query invalidation after mutations.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/ExamResultsPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ExamResultsPage.tsx",
           "frontend/src/hooks/useQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-18",
-        "summary": "Create a library management system with backend data models for books (title, author, isbn, category, availableCopies, totalCopies) and borrowing records (bookId, studentId, borrowDate, dueDate, returnDate, status). Implement CRUD operations for books and borrowing records with role-based access where students can view books and their borrowing history, and administrators can manage books and all borrowing records.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-19",
-        "summary": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/LibraryPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/LibraryPage.tsx",
           "frontend/src/hooks/useQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-20",
-        "summary": "Create a fee payment system with backend data models for fee records (studentId, feeType, amount, dueDate, paidAmount, paidDate, status, description) and payment transactions (feeId, studentId, amount, paymentDate, paymentMethod, transactionId). Implement CRUD operations where students can view their fee obligations and payment history, and administrators can manage fees and record payments.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-21",
-        "summary": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/FeesPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/FeesPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-22",
-        "summary": "Create a contact form system with backend data models for storing contact messages with fields for senderName, senderEmail, subject, message, timestamp, status (new/read/replied), and optional studentId for authenticated users. Implement operations where anyone can submit contact forms and administrators can view and manage all messages.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-23",
-        "summary": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/ContactInboxPage.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/routes.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/ContactInboxPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-24",
-        "summary": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Layout.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Layout.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/blob-storage/Mixin.mo",
-    "backend/blob-storage/Storage.mo",
     "backend/main.mo",
     "backend/migration.mo",
     "build-request.json",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/achievement-badge.dim_150x150.png",
-    "frontend/public/assets/generated/contact-icon.dim_128x128.png",
-    "frontend/public/assets/generated/exam-header.dim_600x300.png",
-    "frontend/public/assets/generated/library-icon.dim_200x200.png",
-    "frontend/public/assets/generated/payment-icon.dim_128x128.png",
-    "frontend/public/assets/generated/school-building.dim_800x600.png",
-    "frontend/public/assets/generated/teacher-placeholder.dim_400x400.png",
     "frontend/src/App.tsx",
     "frontend/src/backend.d.ts",
     "frontend/src/backend.ts",
@@ -176,12 +80,18 @@
     "frontend/src/declarations/backend.did.d.ts",
     "frontend/src/declarations/backend.did.js",
     "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/AnnouncementsPage.tsx",
+    "frontend/src/pages/ClassSchedulePage.tsx",
     "frontend/src/pages/ContactInboxPage.tsx",
     "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/EventsPage.tsx",
     "frontend/src/pages/ExamResultsPage.tsx",
     "frontend/src/pages/FeesPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
     "frontend/src/pages/LibraryPage.tsx",
     "frontend/src/pages/PhotoGalleryPage.tsx",
+    "frontend/src/pages/PoumaiPoemsPage.tsx",
+    "frontend/src/pages/StudentDirectoryPage.tsx",
     "frontend/src/pages/TeachersPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",

@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-photo-gallery-frontend-page-with-category-filtering-general-events-achievements-facilities-grid-display-of-photos-with-titles-and-descriptions-and-an-admin-interface-for-uploading-new-photos-with-form-fields-for-title-description-category-and-image-file-upload-display-photos-as-static-assets-in-frontend-public-assets-photos",
-      "featureTitle": "Create a photo gallery frontend page with category filtering (general, events, achievements, facilities), grid display of photos with titles and descriptions, and an admin interface for uploading new photos with form fields for title, description, category, and image file upload. Display photos as static assets in frontend/public/assets/photos.",
+      "featureId": "feature-create-a-frontend-poumai-poems-page-frontend-src-pages-poumaipoemspage-tsx-displaying-a-collection-of-poumai-poems-in-a-grid-layout-with-category-theme-filtering-capability-each-poem-card-should-display-title-author-poem-text-with-appropriate-formatting-for-line-breaks-date-written-category-theme-and-optional-english-translation-with-cultural-historical-context",
+      "featureTitle": "Create a frontend Poumai Poems page (frontend/src/pages/PoumaiPoemsPage.tsx) displaying a collection of Poumai poems in a grid layout with category/theme filtering capability. Each poem card should display: title, author, poem text (with appropriate formatting for line breaks), date written, category/theme, and optional English translation with cultural/historical context.",
       "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/PhotoGalleryPage.tsx"
+        "frontend/src/pages/PoumaiPoemsPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -18,16 +17,15 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-13"
+        "REQ-25"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-a-teacher-profiles-frontend-page-displaying-teacher-cards-in-a-grid-layout-with-photo-name-subjects-taught-qualifications-contact-info-and-office-hours-add-an-admin-interface-for-creating-and-editing-teacher-profiles-with-a-form-including-all-required-fields",
-      "featureTitle": "Create a teacher profiles frontend page displaying teacher cards in a grid layout with photo, name, subjects taught, qualifications, contact info, and office hours. Add an admin interface for creating and editing teacher profiles with a form including all required fields.",
+      "featureId": "feature-create-an-admin-interface-within-the-poumai-poems-page-for-managing-poems-include-a-dialog-form-with-fields-for-title-author-poem-text-textarea-with-line-break-support-date-written-date-picker-category-dropdown-or-text-input-optional-english-translation-textarea-and-optional-cultural-context-textarea-implement-add-edit-and-delete-functionality-accessible-only-to-admin-users",
+      "featureTitle": "Create an admin interface within the Poumai Poems page for managing poems. Include a dialog form with fields for title, author, poem text (textarea with line break support), date written (date picker), category (dropdown or text input), optional English translation (textarea), and optional cultural context (textarea). Implement add, edit, and delete functionality accessible only to admin users.",
       "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/TeachersPage.tsx"
+        "frontend/src/pages/PoumaiPoemsPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -39,99 +37,15 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-15"
+        "REQ-27"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-an-exam-results-frontend-page-where-students-see-their-own-exam-results-displayed-in-a-table-with-columns-for-exam-name-subject-grade-percentage-date-and-remarks-add-an-admin-interface-for-entering-and-managing-exam-results-with-a-form-for-all-result-fields-and-student-selection",
-      "featureTitle": "Create an exam results frontend page where students see their own exam results displayed in a table with columns for exam name, subject, grade, percentage, date, and remarks. Add an admin interface for entering and managing exam results with a form for all result fields and student selection.",
+      "featureId": "feature-add-a-poumai-poems-navigation-link-to-the-layout-component-frontend-src-components-layout-tsx-navigation-menu-style-the-link-consistently-with-existing-navigation-items-using-the-navy-and-gold-educational-theme-add-the-route-configuration-to-app-tsx-with-path-poumai-poems",
+      "featureTitle": "Add a 'Poumai Poems' navigation link to the Layout component (frontend/src/components/Layout.tsx) navigation menu. Style the link consistently with existing navigation items using the navy and gold educational theme. Add the route configuration to App.tsx with path '/poumai-poems'.",
       "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/ExamResultsPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-17"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-create-a-library-management-frontend-page-with-a-book-catalog-displaying-books-in-a-searchable-table-with-title-author-category-and-availability-show-students-their-borrowing-history-with-due-dates-and-return-status-add-an-admin-interface-for-adding-books-managing-inventory-and-processing-borrow-return-transactions",
-      "featureTitle": "Create a library management frontend page with a book catalog displaying books in a searchable table with title, author, category, and availability. Show students their borrowing history with due dates and return status. Add an admin interface for adding books, managing inventory, and processing borrow/return transactions.",
-      "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/LibraryPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-19"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-create-a-fee-payment-frontend-page-where-students-see-their-outstanding-fees-payment-history-and-total-balance-in-a-clear-dashboard-layout-display-fees-in-a-table-with-fee-type-amount-due-date-paid-amount-and-status-add-an-admin-interface-for-creating-fees-recording-payments-with-amount-and-payment-method-and-viewing-financial-reports",
-      "featureTitle": "Create a fee payment frontend page where students see their outstanding fees, payment history, and total balance in a clear dashboard layout. Display fees in a table with fee type, amount, due date, paid amount, and status. Add an admin interface for creating fees, recording payments with amount and payment method, and viewing financial reports.",
-      "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/FeesPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-21"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-create-a-contact-page-with-a-public-contact-form-including-fields-for-name-email-subject-and-message-add-an-admin-contact-messages-inbox-page-displaying-all-submitted-messages-in-a-table-with-sender-info-subject-timestamp-and-status-with-the-ability-to-mark-messages-as-read-or-replied",
-      "featureTitle": "Create a contact page with a public contact form including fields for name, email, subject, and message. Add an admin contact messages inbox page displaying all submitted messages in a table with sender info, subject, timestamp, and status, with the ability to mark messages as read or replied.",
-      "files": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/ContactInboxPage.tsx",
-        "frontend/src/pages/ContactPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-23"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-layout-component-navigation-menu-to-include-links-to-all-new-sections-photo-gallery-teachers-exam-results-library-fees-and-contact-ensure-navigation-items-are-styled-consistently-with-the-existing-navy-and-gold-educational-theme",
-      "featureTitle": "Update the Layout component navigation menu to include links to all new sections: Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact. Ensure navigation items are styled consistently with the existing navy and gold educational theme.",
-      "files": [
+        "frontend/src/App.tsx",
         "frontend/src/components/Layout.tsx"
       ],
       "components": [
@@ -144,7 +58,27 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-24"
+        "REQ-28"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-react-query-hooks-in-frontend-src-hooks-usequeries-ts-for-poumai-poems-operations-usepoems-fetch-all-poems-usepoemsbycategory-fetch-poems-by-category-usecreatepoem-create-new-poem-useupdatepoem-update-existing-poem-and-usedeletepoem-delete-poem-ensure-proper-query-invalidation-after-mutations",
+      "featureTitle": "Create React Query hooks in frontend/src/hooks/useQueries.ts for Poumai poems operations: usePoems (fetch all poems), usePoemsByCategory (fetch poems by category), useCreatePoem (create new poem), useUpdatePoem (update existing poem), and useDeletePoem (delete poem). Ensure proper query invalidation after mutations.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-29"
       ],
       "confidence": "high"
     }

@@ -1,200 +1,81 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add advanced school management features with photo galleries, teacher profiles, exam results, library system, fee payment, and contact forms",
+  "title": "Create Poumai Poems cultural literary section with admin management",
   "requirements": [
     {
-      "id": "REQ-13",
-      "summary": "Create photo gallery frontend with category filtering, grid display, and admin upload interface",
+      "id": "REQ-25",
+      "summary": "Create Poumai Poems page displaying poems in a grid layout with category filtering",
       "acceptanceCriteria": [
-        "Photo gallery page displays photos in a responsive grid layout",
-        "Users can filter photos by category (general, events, achievements, facilities)",
-        "Each photo shows title, description, and full image",
-        "Administrators see an upload button that opens a form modal",
-        "Upload form includes fields for title, description, category selection, and image file input",
-        "Photos are stored in frontend/public/assets/photos and referenced by URL"
+        "Poumai Poems page displays poems in a responsive grid layout",
+        "Category/theme filter allows users to filter poems by category",
+        "Each poem card shows title, author, poem text with preserved formatting, date written, category, and optional English translation",
+        "Cultural/historical context is displayed when available",
+        "Page follows the existing navy and gold educational theme"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/PhotoGalleryPage.tsx",
+          "path": "frontend/src/pages/PoumaiPoemsPage.tsx",
           "operation": "create",
-          "description": "Create photo gallery page with category filter tabs (general, events, achievements, facilities), responsive grid layout displaying photo cards with images, titles, and descriptions. Use blob-storage component to handle photo display with ExternalBlob.getDirectURL() for streaming and caching. For admin users, include an upload button that opens a dialog form with fields for title, description, category dropdown, and file upload input using ExternalBlob.fromBytes() with upload progress tracking. Verify the blob-storage component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add React Query hooks for photo gallery: useGetPhotoRecordsByCategory to fetch photos by category using backend method getPhotoRecordsByCategory, useGetAllPhotoRecords for admin view using getAllPhotoRecords, useAddPhotoRecord mutation for uploading photos using addPhotoRecord, useUpdatePhotoRecord mutation using updatePhotoRecord, and useRemovePhotoRecord mutation using removePhotoRecord. Handle ExternalBlob types from blob-storage component."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /photos route pointing to PhotoGalleryPage component in the router configuration."
+          "description": "Create the Poumai Poems page component that displays a collection of Poumai poems in a responsive grid layout. Include category/theme filtering using a dropdown or filter buttons. Each poem card should display title, author, poem text (with line breaks preserved using whitespace-pre-wrap CSS), date written, category/theme, and optional English translation with cultural/historical context. Use the usePoems and usePoemsByCategory hooks for data fetching. Apply the existing navy and gold educational theme from frontend/index.css. Include loading and error states. For admin users, show 'Add Poem' button and edit/delete actions on each card."
         }
       ]
     },
     {
-      "id": "REQ-15",
-      "summary": "Create teacher profiles frontend displaying teacher cards with admin management interface",
+      "id": "REQ-27",
+      "summary": "Create admin interface for managing poems with add, edit, and delete functionality",
       "acceptanceCriteria": [
-        "Teacher profiles page displays all teachers in a responsive card grid",
-        "Each card shows teacher photo, name, subjects, qualifications, contact info, and office hours",
-        "Administrators see buttons to add new teachers and edit existing profiles",
-        "Teacher form includes inputs for name, subjects (multi-select or comma-separated), qualifications, contact info, photo URL, and office hours",
-        "Teacher photos are stored in frontend/public/assets/teachers"
+        "Admin users see 'Add Poem' button on the Poumai Poems page",
+        "Dialog form includes all required fields with appropriate input types",
+        "Poem text textarea preserves line breaks and formatting",
+        "Edit and delete buttons appear on poem cards for admin users",
+        "Form validation ensures required fields are filled",
+        "Success/error notifications appear after operations"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/TeachersPage.tsx",
-          "operation": "create",
-          "description": "Create teachers page displaying teacher profile cards in a responsive grid layout. Each card shows teacher photo using ExternalBlob.getDirectURL() from blob-storage component, name, subjects (displayed as badges or comma-separated list), qualifications, contact info, and office hours. For admin users, include an 'Add Teacher' button and edit buttons on each card that open a dialog form with inputs for all TeacherProfile fields including name (text), subjects (multi-select or comma-separated text), qualifications (textarea), contact info (text), photo file upload using ExternalBlob.fromBytes(), and office hours (text). Verify the blob-storage component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
+          "path": "frontend/src/pages/PoumaiPoemsPage.tsx",
           "operation": "modify",
-          "description": "Add React Query hooks for teacher profiles: useGetAllTeacherProfiles to fetch all teachers using backend method getAllTeacherProfiles, useGetTeacherProfile to fetch single teacher using getTeacherProfile, useAddTeacherProfile mutation using addTeacherProfile, useUpdateTeacherProfile mutation using updateTeacherProfile, and useRemoveTeacherProfile mutation using removeTeacherProfile. Handle ExternalBlob types for teacher photos."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /teachers route pointing to TeachersPage component in the router configuration."
+          "description": "Add admin-only dialog form for creating and editing poems within the PoumaiPoemsPage component. The dialog should include fields for: title (text input), author (text input), poem text (textarea with line break support), date written (date picker input), category (text input or dropdown with predefined categories like 'Traditional', 'Modern', 'Nature', 'Love', 'Historical'), optional English translation (textarea), and optional cultural context (textarea). Use the useCreatePoem, useUpdatePoem, and useDeletePoem hooks from useQueries.ts. Implement form validation to ensure required fields (title, author, poemText, dateWritten, category) are filled. Show success toast notifications after successful operations and error messages on failures. Add 'Edit' and 'Delete' buttons on each poem card that are only visible to admin users. Use the useInternetIdentity hook and backend isCallerAdmin method to check admin status."
         }
       ]
     },
     {
-      "id": "REQ-17",
-      "summary": "Create exam results frontend where students view their results and admins manage all results",
+      "id": "REQ-28",
+      "summary": "Add Poumai Poems navigation link and route configuration",
       "acceptanceCriteria": [
-        "Students see a table of their own exam results when authenticated",
-        "Results table shows exam name, subject, grade, percentage, date, and remarks",
-        "Students can filter their results by subject or date range",
-        "Administrators see all results and have buttons to add/edit results",
-        "Admin form includes student selection, exam name, subject, grade, percentage, date, and remarks inputs"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ExamResultsPage.tsx",
-          "operation": "create",
-          "description": "Create exam results page that displays a table of exam results with columns for exam name, subject, grade, percentage, exam date, and remarks. For regular users (students), fetch and display only their own results using getStudentExamResults with their studentId from their user profile. Include filters for subject and date range. For admin users, display all results using getAllExamResults and include buttons to add new results and edit existing ones. Admin form dialog should include student selection dropdown (populated from getAllStudents), exam name input, subject input, grade input, percentage number input, date picker for examDate, and remarks textarea. Use authorization component patterns to check user role and conditionally render admin controls."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add React Query hooks for exam results: useGetStudentExamResults to fetch results for a specific student using getStudentExamResults, useGetAllExamResults for admin view using getAllExamResults, useAddExamResult mutation using addExamResult, useUpdateExamResult mutation using updateExamResult, and useRemoveExamResult mutation using removeExamResult. Include proper authorization checks based on user role."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /exam-results route pointing to ExamResultsPage component in the router configuration."
-        }
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "summary": "Create library management frontend with book catalog, borrowing history, and admin controls",
-      "acceptanceCriteria": [
-        "Library page shows a searchable catalog of all books with availability status",
-        "Students see their current borrowed books with due dates and borrowing history",
-        "Students can see which books are available to borrow",
-        "Administrators see buttons to add new books and manage inventory",
-        "Administrators can record book borrowing and returns with student selection and date inputs",
-        "System visually indicates overdue books"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/LibraryPage.tsx",
-          "operation": "create",
-          "description": "Create library page with two main sections: book catalog and borrowing management. Display searchable book catalog table with columns for title, author, ISBN, category, and availability (availableCopies/totalCopies). Show book thumbnail images using ExternalBlob.getDirectURL() from blob-storage component. For students, display their current borrowed books and borrowing history using getStudentBorrowingHistory, highlighting overdue books with visual indicators (red text or badge) based on BorrowStatus. For admin users, include buttons to add new books (form with title, author, ISBN, category, totalCopies, availableCopies, and thumbnail file upload), manage borrowing transactions (dialog with student selection, book selection, due date picker for borrowing; return button for returns), and edit book inventory. Use authorization component patterns for role-based UI. Verify the blob-storage component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add React Query hooks for library: useGetAllBooks using getAllBooks, useGetAvailableBooks using getAvailableBooks, useGetStudentBorrowingHistory using getStudentBorrowingHistory, useGetAllBorrowingRecords for admin using getAllBorrowingRecords, useAddBook mutation using addBook, useUpdateBook mutation using updateBook, useRemoveBook mutation using removeBook, useBorrowBook mutation using borrowBook, useReturnBook mutation using returnBook, and useUpdateBorrowingStatus mutation using updateBorrowingStatus. Handle ExternalBlob types for book thumbnails."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /library route pointing to LibraryPage component in the router configuration."
-        }
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "summary": "Create fee payment frontend with student fee dashboard and admin financial management",
-      "acceptanceCriteria": [
-        "Students see a dashboard showing total outstanding balance and payment history",
-        "Fees are displayed in a table with type, amount, due date, amount paid, and status",
-        "Students see visual indicators for overdue fees",
-        "Administrators can create new fees for students with fee type, amount, due date, and description",
-        "Administrators can record payments with student selection, fee selection, amount, payment method, and transaction ID",
-        "Payment history shows all transactions with dates and methods"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/FeesPage.tsx",
-          "operation": "create",
-          "description": "Create fees page with student and admin views. For students, display a dashboard showing total outstanding balance (sum of unpaid fees) at the top, followed by a table of their fee records with columns for fee type, amount, due date, paid amount, and status (with color-coded badges for pending/partial/paid/overdue). Below that, show payment history table with payment date, amount, payment method, and transaction ID. Highlight overdue fees with red styling. For admin users, include buttons to create new fees (dialog form with student selection, fee type, amount, due date, description), record payments (dialog with student selection, fee dropdown filtered to that student's unpaid fees, amount input, payment method input, transaction ID input, payment date picker), and view all financial records across all students. Use authorization component patterns for role-based access."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add React Query hooks for fees: useGetStudentFeeRecords using getStudentFeeRecords, useGetAllFeeRecords for admin using getAllFeeRecords, useGetStudentPaymentHistory using getStudentPaymentHistory, useGetAllPaymentTransactions for admin using getAllPaymentTransactions, useAddFeeRecord mutation using addFeeRecord, useUpdateFeeRecord mutation using updateFeeRecord, useRemoveFeeRecord mutation using removeFeeRecord, and useRecordPayment mutation using recordPayment. Handle bigint types for amounts."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /fees route pointing to FeesPage component in the router configuration."
-        }
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "summary": "Create public contact page with form and admin inbox for managing messages",
-      "acceptanceCriteria": [
-        "Contact page is publicly accessible without authentication",
-        "Form includes required fields for name, email, subject, and message",
-        "Authenticated users have name and email pre-filled from their profile",
-        "Form shows success message after submission",
-        "Administrators see a messages inbox page with all contact submissions",
-        "Admin inbox displays messages in a table with filters for status (new/read/replied)",
-        "Administrators can click messages to view full content and update status"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "create",
-          "description": "Create publicly accessible contact page with a form containing required fields for name, email, subject (text input), and message (textarea). For authenticated users, pre-fill name and email from their user profile using getCallerUserProfile. On form submission, call submitContactForm backend method. Display success toast message after successful submission. Form should work for both authenticated and unauthenticated users. Include school contact information (phone, email, address) alongside the form."
-        },
-        {
-          "path": "frontend/src/pages/ContactInboxPage.tsx",
-          "operation": "create",
-          "description": "Create admin-only contact messages inbox page displaying all submitted contact forms in a table with columns for sender name, sender email, subject, timestamp, and status. Include filter tabs or dropdown for status (new, read, replied). Clicking a message row opens a dialog showing full message content with sender details and allows admin to update the status. Use authorization component to ensure only admins can access this page and show AccessDeniedScreen for non-admin users."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add React Query hooks for contact forms: useSubmitContactForm mutation using submitContactForm (publicly accessible), useGetAllContactForms for admin using getAllContactForms, useGetContactFormsByStatus for admin using getContactFormsByStatus, useUpdateContactStatus mutation using updateContactStatus, and useDeleteContactForm mutation using deleteContactForm. Include proper authorization checks for admin-only operations."
-        },
-        {
-          "path": "frontend/src/routes.tsx",
-          "operation": "modify",
-          "description": "Register /contact route pointing to ContactPage component and /admin/contact-inbox route pointing to ContactInboxPage component in the router configuration."
-        }
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "summary": "Update navigation menu to include links to all new feature pages with consistent styling",
-      "acceptanceCriteria": [
-        "Navigation menu includes links to Photo Gallery, Teachers, Exam Results, Library, Fees, and Contact pages",
-        "New navigation items match the existing styling and theme",
-        "Mobile menu includes all new navigation items",
-        "Navigation highlights the active page"
+        "Poumai Poems link appears in both desktop and mobile navigation menus",
+        "Link styling matches existing navigation items",
+        "Route is properly configured in App.tsx",
+        "Clicking the link navigates to the Poumai Poems page"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Layout.tsx",
           "operation": "modify",
-          "description": "Add navigation links to the existing nav menu for Photo Gallery (/photos), Teachers (/teachers), Exam Results (/exam-results), Library (/library), Fees (/fees), and Contact (/contact). Ensure these new links follow the existing styling patterns with navy and gold theme colors, active state highlighting, and are included in both desktop and mobile navigation menus. Position Contact link appropriately (typically at the end). Ensure admin-only inbox link (/admin/contact-inbox) is conditionally rendered only for admin users."
+          "description": "Add a 'Poumai Poems' navigation link to both the desktop navigation menu and the mobile navigation menu. Position it appropriately among the existing links (e.g., after Library). Style the link consistently with existing navigation items using the same className pattern and navy/gold theme colors. The link should navigate to '/poumai-poems'."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route configuration for the Poumai Poems page with path '/poumai-poems'. Import the PoumaiPoemsPage component and add it to the router configuration following the existing pattern. Ensure the route is accessible to all authenticated users."
+        }
+      ]
+    },
+    {
+      "id": "REQ-29",
+      "summary": "Create React Query hooks for Poumai poems CRUD operations",
+      "acceptanceCriteria": [
+        "All React Query hooks are properly typed with TypeScript",
+        "Hooks handle loading and error states",
+        "Mutations invalidate relevant queries to refresh data",
+        "Hooks integrate with the backend actor from useActor hook"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks for Poumai poems operations: usePoems (fetch all poems using listPoems backend method), usePoemsByCategory (fetch poems by category using listPoemsByCategory backend method with category parameter), useCreatePoem (mutation for createPoem backend method), useUpdatePoem (mutation for updatePoem backend method), and useDeletePoem (mutation for deletePoem backend method). All hooks should use the actor from useActor hook and be properly typed with TypeScript using the Poem interface from backend.d.ts. Mutations should invalidate the 'poems' query key to refresh data after create/update/delete operations. Follow the existing pattern used for other queries in this file."
         }
       ]
     }

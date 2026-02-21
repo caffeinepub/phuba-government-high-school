@@ -35,7 +35,6 @@ export default function ProfileSetupModal() {
 
       await saveProfile.mutateAsync({
         name: name.trim(),
-        role: 'user',
         photo: emptyPhotoBlob,
         studentId: studentId.trim() || undefined,
       });
@@ -72,7 +71,7 @@ export default function ProfileSetupModal() {
               placeholder="Enter your student ID if applicable"
             />
             <p className="text-xs text-muted-foreground mt-1">
-              Required to access exam results, library, and fee information
+              Optional identifier for your profile
             </p>
           </div>
           <Button type="submit" className="w-full" disabled={saveProfile.isPending || !name.trim()}>
